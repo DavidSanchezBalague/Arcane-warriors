@@ -1,0 +1,31 @@
+[Llaves de Unity recomendadas]
+# Archivos del sistema
+.DS_Store
+Thumbs.db
+
+# Configuración de la carpeta Unity
+[Llaves específicas a Unity]
+Library/
+Temp/
+Obj/
+Build/
+Builds/
+Logs/
+MemoryCaptures/
+UserSettings/
+
+# Archivos específicos de Visual Studio
+.vs/
+*.csproj
+*.pidb
+*.suo
+*.user
+*.unityproj
+
+# Otros archivos y carpetas ignorables
+*.swp
+*.lock
+*.tmp
+*.bak
+*.old
+*.log
