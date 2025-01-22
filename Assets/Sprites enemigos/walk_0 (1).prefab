@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 1681960572701692456}
   - component: {fileID: 6927988379708141971}
   - component: {fileID: -185583610048193834}
+  - component: {fileID: 1535529654910413273}
   m_Layer: 0
   m_Name: walk_0 (1)
   m_TagString: Enemigo
@@ -173,3 +174,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   velocidad: 3
   distanciaMinima: 1.5
+--- !u!114 &1535529654910413273
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3596122209876473173}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 394d276b7c10de949a41b7e2aab76e46, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHealth: 50

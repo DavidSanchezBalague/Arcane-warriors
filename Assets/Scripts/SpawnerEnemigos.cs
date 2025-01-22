@@ -9,6 +9,15 @@ public class SpawnerEnemigos : MonoBehaviour
 
     void Start()
     {
+        if (prefabEnemigo == null)
+        {
+            Debug.LogError("¡No se ha asignado ningún prefab al campo 'Prefab Enemigo'!");
+        }
+        else
+        {
+            Debug.Log("Prefab Enemigo asignado correctamente: " + prefabEnemigo.name);
+        }
+
         // Spawn inicial de enemigos
         for (int i = 0; i < cantidadInicial; i++)
         {
@@ -21,14 +30,26 @@ public class SpawnerEnemigos : MonoBehaviour
 
     void SpawnEnemigo()
     {
+        // Validar si el prefab está asignado y no es nulo
+        if (prefabEnemigo == null)
+        {
+            Debug.LogError("El prefab de enemigo no está asignado o fue destruido. Cancela el spawn.");
+            CancelInvoke(nameof(SpawnEnemigo)); // Detén la generación periódica de enemigos
+            return;
+        }
+
         // Generar una posición aleatoria dentro de los límites
         float x = Random.Range(limitesSpawn.xMin, limitesSpawn.xMax);
         float y = Random.Range(limitesSpawn.yMin, limitesSpawn.yMax);
 
-        // Crear el enemigo en la posición aleatoria
         Vector3 posicionSpawn = new Vector3(x, y, 0f);
+
+        // Instanciar el enemigo
         Instantiate(prefabEnemigo, posicionSpawn, Quaternion.identity);
+
+        Debug.Log("Enemigo generado en posición: " + posicionSpawn);
     }
+
 
     private void OnDrawGizmos()
     {
