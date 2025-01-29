@@ -1297,7 +1297,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   prefabEnemigo: {fileID: 3596122209876473173, guid: 56e59576ec0105c4497e4a7c36ebe109, type: 3}
   cantidadInicial: 2
-  spawnRate: 2
+  spawnRate: 1
   limitesSpawn:
     serializedVersion: 2
     x: -45
@@ -1773,8 +1773,8 @@ MonoBehaviour:
   player: {fileID: 1977411731}
   pistol: {fileID: 80796868}
   bulletPrefab: {fileID: 652362500794398836, guid: 29e20611a44883c48be4ece53a5d4933, type: 3}
-  bulletSpeed: 10
-  fireRate: 3
+  bulletSpeed: 20
+  fireRate: 0.5
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

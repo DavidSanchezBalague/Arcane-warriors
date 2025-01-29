@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 6927988379708141971}
   - component: {fileID: -185583610048193834}
   - component: {fileID: 1535529654910413273}
+  - component: {fileID: -50292634787543608}
   m_Layer: 0
   m_Name: walk_0 (1)
   m_TagString: Enemigo
@@ -187,3 +188,26 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHealth: 50
+--- !u!114 &-50292634787543608
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3596122209876473173}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3b9a7c3bdfbef674c91418e4de2e0d5a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  walkSprites:
+  - {fileID: 21300000, guid: 34dd4aa5045b5f54291773fe46d7bf68, type: 3}
+  - {fileID: 21300000, guid: 105c5f0d50a474f42abc036e1f1edffb, type: 3}
+  - {fileID: 21300000, guid: 0a1e8b7499e5b80428fe1d8a6b297bdc, type: 3}
+  - {fileID: 21300000, guid: 111bc6fbbc977854ba8ebeedbc2c2e1b, type: 3}
+  - {fileID: 21300000, guid: 447ab7595ff17f74192fac2d4ffcf20b, type: 3}
+  - {fileID: 21300000, guid: 1b81f6689d0b030439e64d6040da4067, type: 3}
+  - {fileID: 21300000, guid: d803a21c7b89ee24fbc3126d3a75029c, type: 3}
+  - {fileID: 21300000, guid: da91309d6ce8d364fa95fcb4a99cc0a3, type: 3}
+  animationSpeed: 0.1
+  moveSpeed: 2
