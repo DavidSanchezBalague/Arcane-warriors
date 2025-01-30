@@ -1,16 +1,21 @@
 using UnityEngine;
 using TMPro; // Necesario si usas TextMeshPro
+using UnityEngine.UI;
 
 public class JugadorVida : MonoBehaviour
 {
+    [SerializeField] Slider sliderVidas;
     public int vidaInicial = 100; // Vida inicial del jugador
     private int vidaActual; // Vida actual del jugador
+    
 
     public TextMeshProUGUI vidaText; // Referencia al TextMeshPro del Canvas
 
     void Start()
     {
         vidaActual = vidaInicial; // Inicializa la vida actual
+        sliderVidas.maxValue = vidaInicial;
+        sliderVidas.value = sliderVidas.maxValue;
         ActualizarTextoVida(); // Actualiza la UI al inicio
     }
 
@@ -29,6 +34,7 @@ public class JugadorVida : MonoBehaviour
         vidaActual = Mathf.Max(vidaActual, 0); // Asegura que la vida no sea negativa
         Debug.Log("Vida actual: " + vidaActual); // Muestra en la consola la vida actual
 
+        sliderVidas.value = vidaActual;
         ActualizarTextoVida(); // Actualiza el texto de vida en pantalla
 
         // Si la vida llega a 0, puedes manejar la lógica de muerte aquí
