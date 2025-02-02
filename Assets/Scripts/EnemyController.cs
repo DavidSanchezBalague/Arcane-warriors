@@ -4,6 +4,7 @@ public class EnemyController : MonoBehaviour
 {
     public int maxHealth = 30;
     private int currentHealth;
+    public int pointsForKilling = 10;
 
     void Start()
     {
@@ -22,6 +23,7 @@ public class EnemyController : MonoBehaviour
 
     void Die()
     {
+        ScoreManager.Instance.AddPoints(pointsForKilling);
         Destroy(gameObject);
     }
 }

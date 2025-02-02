@@ -5,11 +5,22 @@ public class VidaPersonaje : MonoBehaviour
     public int vidaMaxima = 100; // Vida máxima del personaje
     public int vidaActual { get; private set; } // Vida actual del personaje (propiedad pública solo lectura)
     public bool estaVivo { get; private set; } = true; // Bandera de vida del jugador
-
+    [SerializeField] private GameObject backUpCamera;
+    [SerializeField] private Camera playerCamera;
     void Start()
     {
         // Inicializar la vida actual al máximo al inicio
         vidaActual = vidaMaxima;
+
+        if (playerCamera != null)
+        {
+            playerCamera.gameObject.SetActive(true);
+        }
+
+        if (backUpCamera != null)
+        {
+            backUpCamera.SetActive(false);
+        }
     }
 
     public void RestarVida(int cantidad)
@@ -34,5 +45,14 @@ public class VidaPersonaje : MonoBehaviour
 
         // Ejemplo: desactivar el jugador (puedes cambiar esto por otras acciones, como reiniciar nivel, animación de muerte, etc.)
         gameObject.SetActive(false);
+        if (backUpCamera != null)
+        {
+            backUpCamera.SetActive(true); // Activar la cámara de respaldo
+        }
+
+        if (playerCamera != null)
+        {
+            playerCamera.gameObject.SetActive(false); // Desactivar la cámara del jugador
+        }
     }
 }

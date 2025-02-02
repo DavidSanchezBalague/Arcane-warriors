@@ -42,6 +42,7 @@ public class JugadorVida : MonoBehaviour
         {
             Debug.Log("¡El jugador ha muerto!");
             // Aquí puedes implementar más lógica, como reiniciar el nivel
+            FindAnyObjectByType<GameOver>().MostrarGameOver();
         }
     }
 
