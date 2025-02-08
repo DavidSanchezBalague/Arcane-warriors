@@ -27,4 +27,14 @@ public class EnemyController : MonoBehaviour
         SoundManager.Instance.PlaySound3D("hurt", transform.position);
         Destroy(gameObject);
     }
+
+    public int points = 10; // Puntos por matar al enemigo
+
+    private void OnDestroy()
+    {
+        if (PuntosInGame.instance != null)
+        {
+            PuntosInGame.instance.AddScore(points);
+        }
+    }
 }

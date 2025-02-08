@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class ScoreManager : MonoBehaviour
@@ -19,10 +17,13 @@ public class ScoreManager : MonoBehaviour
         else
         {
             Destroy(gameObject);
+            return;
         }
+
+        ResetScore(); // IMPORTANTE: Resetear la puntuación al inicio de la partida
     }
 
-    public void ETscore()
+    public void ResetScore()
     {
         score = 0;
     }
