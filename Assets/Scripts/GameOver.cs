@@ -21,6 +21,7 @@ public class GameOver : MonoBehaviour
     public void ReiniciarNivel()
     {
         Time.timeScale = 1;
+
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 

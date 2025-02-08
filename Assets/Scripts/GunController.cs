@@ -57,6 +57,8 @@ public class GunController : MonoBehaviour
     {
         GameObject bullet = Instantiate(bulletPrefab, pistol.position, pistol.rotation);
 
+        SoundManager.Instance.PlaySound3D("Shoot", transform.position);
+
         Vector2 direction = (target.position - pistol.position).normalized;
 
         Rigidbody2D rb = bullet.GetComponent<Rigidbody2D>();
