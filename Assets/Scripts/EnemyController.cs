@@ -24,6 +24,7 @@ public class EnemyController : MonoBehaviour
     void Die()
     {
         ScoreManager.Instance.AddPoints(pointsForKilling);
+        SoundManager.Instance.PlaySound3D("hurt", transform.position);
         Destroy(gameObject);
     }
 }

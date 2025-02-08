@@ -22,6 +22,11 @@ public class ScoreManager : MonoBehaviour
         }
     }
 
+    public void ETscore()
+    {
+        score = 0;
+    }
+
     public void AddPoints(int points)
     {
         score += points;

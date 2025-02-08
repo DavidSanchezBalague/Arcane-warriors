@@ -27,6 +27,8 @@ public class VidaPersonaje : MonoBehaviour
     {
         if (!estaVivo) return; // Si el jugador ya está muerto, no restar más vida.
 
+        SoundManager.Instance.PlaySound3D("hurtPlayer", transform.position);
+
         vidaActual -= cantidad;
         vidaActual = Mathf.Clamp(vidaActual, 0, vidaMaxima);
 
@@ -41,6 +43,7 @@ public class VidaPersonaje : MonoBehaviour
 
     private void Morir()
     {
+        SoundManager.Instance.PlaySound3D("hurtPlayer", transform.position);
         Debug.Log("¡El jugador ha muerto!");
 
         // Ejemplo: desactivar el jugador (puedes cambiar esto por otras acciones, como reiniciar nivel, animación de muerte, etc.)
