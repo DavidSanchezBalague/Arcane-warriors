@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &3596122209876473173
+--- !u!1 &3106744286207271519
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,42 +8,42 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 554271584231262724}
-  - component: {fileID: 4155614935990030713}
-  - component: {fileID: 1681960572701692456}
-  - component: {fileID: 6927988379708141971}
-  - component: {fileID: -185583610048193834}
-  - component: {fileID: 1535529654910413273}
-  - component: {fileID: -50292634787543608}
+  - component: {fileID: 6221810309920014420}
+  - component: {fileID: 7458599871856446117}
+  - component: {fileID: 7231995303100703602}
+  - component: {fileID: 8403041724851115632}
+  - component: {fileID: 2738564909360343695}
+  - component: {fileID: 2102763274905244488}
+  - component: {fileID: 8310918770760461677}
   m_Layer: 0
-  m_Name: walk_0 (1)
+  m_Name: enemigo2
   m_TagString: Enemigo
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &554271584231262724
+--- !u!4 &6221810309920014420
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3596122209876473173}
+  m_GameObject: {fileID: 3106744286207271519}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: -20.086851, y: -3.2803373, z: 0}
   m_LocalScale: {x: 0.5, y: 0.5, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!212 &4155614935990030713
+--- !u!212 &7458599871856446117
 SpriteRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3596122209876473173}
+  m_GameObject: {fileID: 3106744286207271519}
   m_Enabled: 1
   m_CastShadows: 0
   m_ReceiveShadows: 0
@@ -78,7 +78,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 34dd4aa5045b5f54291773fe46d7bf68, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 49ee725cca7b88840bbe7d9e2e616048, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -89,13 +89,13 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!61 &1681960572701692456
+--- !u!61 &7231995303100703602
 BoxCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3596122209876473173}
+  m_GameObject: {fileID: 3106744286207271519}
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
@@ -121,7 +121,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.08976483, y: -3.979528}
+  m_Offset: {x: 0.0066280365, y: -4.6542726}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -132,16 +132,16 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 4.502044, y: 7.7335415}
+  m_Size: {x: 3.9236946, y: 5.998481}
   m_EdgeRadius: 0
---- !u!50 &6927988379708141971
+--- !u!50 &8403041724851115632
 Rigidbody2D:
   serializedVersion: 4
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3596122209876473173}
+  m_GameObject: {fileID: 3106744286207271519}
   m_BodyType: 0
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
@@ -161,13 +161,13 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
---- !u!114 &-185583610048193834
+--- !u!114 &2738564909360343695
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3596122209876473173}
+  m_GameObject: {fileID: 3106744286207271519}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 2b86630509c029948a7f1f116c8db1bc, type: 3}
@@ -175,42 +175,42 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   velocidad: 10
   distanciaMinima: 1.5
---- !u!114 &1535529654910413273
+--- !u!114 &2102763274905244488
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3596122209876473173}
+  m_GameObject: {fileID: 3106744286207271519}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 394d276b7c10de949a41b7e2aab76e46, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 50
+  maxHealth: 30
   pointsForKilling: 10
   points: 10
---- !u!114 &-50292634787543608
+--- !u!114 &8310918770760461677
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3596122209876473173}
+  m_GameObject: {fileID: 3106744286207271519}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3b9a7c3bdfbef674c91418e4de2e0d5a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   walkSprites:
-  - {fileID: 21300000, guid: 34dd4aa5045b5f54291773fe46d7bf68, type: 3}
-  - {fileID: 21300000, guid: 105c5f0d50a474f42abc036e1f1edffb, type: 3}
-  - {fileID: 21300000, guid: 0a1e8b7499e5b80428fe1d8a6b297bdc, type: 3}
-  - {fileID: 21300000, guid: 111bc6fbbc977854ba8ebeedbc2c2e1b, type: 3}
-  - {fileID: 21300000, guid: 447ab7595ff17f74192fac2d4ffcf20b, type: 3}
-  - {fileID: 21300000, guid: 1b81f6689d0b030439e64d6040da4067, type: 3}
-  - {fileID: 21300000, guid: d803a21c7b89ee24fbc3126d3a75029c, type: 3}
-  - {fileID: 21300000, guid: da91309d6ce8d364fa95fcb4a99cc0a3, type: 3}
+  - {fileID: 21300000, guid: 49ee725cca7b88840bbe7d9e2e616048, type: 3}
+  - {fileID: 21300000, guid: 487a0c018c411df44869b85e066ffb31, type: 3}
+  - {fileID: 21300000, guid: 1ad2c2048afc667488009a84ad9c0a31, type: 3}
+  - {fileID: 21300000, guid: 6fb098a286231b74ca5f63f6c45ff0d8, type: 3}
+  - {fileID: 21300000, guid: 6dd0af44734d8e343803212a21ba6287, type: 3}
+  - {fileID: 21300000, guid: 5f6ead2f3c6810a49a3c337aea9c4fb2, type: 3}
+  - {fileID: 21300000, guid: b4c7d9529edd131479f05e865a66cea7, type: 3}
+  - {fileID: 21300000, guid: ed314f2913b2fe440943a539c8056226, type: 3}
   animationSpeed: 0.1
   moveSpeed: 2
   player: {fileID: 0}

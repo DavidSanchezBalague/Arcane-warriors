@@ -2,21 +2,21 @@ using UnityEngine;
 
 public class SpawnerEnemigos : MonoBehaviour
 {
-    public GameObject prefabEnemigo; // Prefab del enemigo
+    public GameObject[] prefabsEnemigos; // Array de prefabs de enemigos
     public int cantidadInicial = 5; // Cantidad inicial de enemigos
     public float spawnRate = 2f; // Tiempo entre spawns (en segundos)
     public Rect limitesSpawn; // Rectángulo de los límites de spawn
 
     void Start()
     {
-        if (prefabEnemigo == null)
+        // Verificar si hay prefabs asignados
+        if (prefabsEnemigos == null || prefabsEnemigos.Length == 0)
         {
-            Debug.LogError("¡No se ha asignado ningún prefab al campo 'Prefab Enemigo'!");
+            Debug.LogError("¡No hay prefabs de enemigos asignados!");
+            return;
         }
-        else
-        {
-            Debug.Log("Prefab Enemigo asignado correctamente: " + prefabEnemigo.name);
-        }
+
+        Debug.Log("Se han asignado " + prefabsEnemigos.Length + " prefabs de enemigos.");
 
         // Spawn inicial de enemigos
         for (int i = 0; i < cantidadInicial; i++)
@@ -30,26 +30,27 @@ public class SpawnerEnemigos : MonoBehaviour
 
     void SpawnEnemigo()
     {
-        // Validar si el prefab está asignado y no es nulo
-        if (prefabEnemigo == null)
+        // Verificar que haya prefabs disponibles
+        if (prefabsEnemigos == null || prefabsEnemigos.Length == 0)
         {
-            Debug.LogError("El prefab de enemigo no está asignado o fue destruido. Cancela el spawn.");
-            CancelInvoke(nameof(SpawnEnemigo)); // Detén la generación periódica de enemigos
+            Debug.LogError("No hay prefabs de enemigos disponibles. Cancela el spawn.");
+            CancelInvoke(nameof(SpawnEnemigo)); // Detener la invocación periódica
             return;
         }
+
+        // Elegir un prefab de enemigo aleatorio
+        GameObject prefabElegido = prefabsEnemigos[Random.Range(0, prefabsEnemigos.Length)];
 
         // Generar una posición aleatoria dentro de los límites
         float x = Random.Range(limitesSpawn.xMin, limitesSpawn.xMax);
         float y = Random.Range(limitesSpawn.yMin, limitesSpawn.yMax);
-
         Vector3 posicionSpawn = new Vector3(x, y, 0f);
 
         // Instanciar el enemigo
-        Instantiate(prefabEnemigo, posicionSpawn, Quaternion.identity);
+        Instantiate(prefabElegido, posicionSpawn, Quaternion.identity);
 
-        Debug.Log("Enemigo generado en posición: " + posicionSpawn);
+        Debug.Log("Enemigo generado (" + prefabElegido.name + ") en posición: " + posicionSpawn);
     }
-
 
     private void OnDrawGizmos()
     {
