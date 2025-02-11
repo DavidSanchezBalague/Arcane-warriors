@@ -17,7 +17,7 @@ public class EnemigoMovimiento : MonoBehaviour
         }
         else
         {
-            Debug.LogError("No se ha encontrado un jugador con la etiqueta 'Player'. Asegúrate de que el jugador tiene esta etiqueta.");
+            Debug.Log("No se ha encontrado un jugador con la etiqueta 'Player'. Asegúrate de que el jugador tiene esta etiqueta.");
         }
     }
 
