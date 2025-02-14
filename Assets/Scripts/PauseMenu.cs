@@ -28,6 +28,11 @@ public class PauseMenu : MonoBehaviour
         isPaused = false;
     }
 
+    public void Quit()
+    {
+        Application.Quit();
+    }
+
     private void Pause()
     {
         pauseMenuUI.SetActive(true);
