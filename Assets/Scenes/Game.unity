@@ -4400,6 +4400,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: enemigo2
       objectReference: {fileID: 0}
+    - target: {fileID: 3106744286207271519, guid: 6c855fb97e3f88b478dca6d0c09ae46d, type: 3}
+      propertyPath: m_TagString
+      value: Enemigo
+      objectReference: {fileID: 0}
     - target: {fileID: 6221810309920014420, guid: 6c855fb97e3f88b478dca6d0c09ae46d, type: 3}
       propertyPath: m_LocalPosition.x
       value: -27.2719
@@ -4704,6 +4708,10 @@ PrefabInstance:
     - target: {fileID: 433275741757701562, guid: 03b9d3e103f5cb0498d62988a02fd56f, type: 3}
       propertyPath: m_Name
       value: enemigo3
+      objectReference: {fileID: 0}
+    - target: {fileID: 433275741757701562, guid: 03b9d3e103f5cb0498d62988a02fd56f, type: 3}
+      propertyPath: m_TagString
+      value: Enemigo
       objectReference: {fileID: 0}
     - target: {fileID: 1283838393532126314, guid: 03b9d3e103f5cb0498d62988a02fd56f, type: 3}
       propertyPath: m_LocalPosition.x
