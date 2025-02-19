@@ -7,11 +7,13 @@ public class EnemyController : MonoBehaviour
     private int currentHealth;
     public int pointsForKilling = 10;
     private SpriteRenderer spriteRenderer;
+    private ControladorEnemigos controlador; // Referencia al ControladorEnemigos
 
     void Start()
     {
         currentHealth = maxHealth;
         spriteRenderer = GetComponent<SpriteRenderer>();
+        controlador = FindObjectOfType<ControladorEnemigos>(); // Buscar el controlador en la escena
     }
 
     public void TakeDamage(int damage)
@@ -36,6 +38,13 @@ public class EnemyController : MonoBehaviour
     {
         ScoreManager.Instance.AddPoints(pointsForKilling);
         SoundManager.Instance.PlaySound3D("hurt", transform.position);
+
+        // Notificar al controlador que este enemigo murió
+        if (controlador != null)
+        {
+            controlador.EnemigoEliminado();
+        }
+
         Destroy(gameObject);
     }
 

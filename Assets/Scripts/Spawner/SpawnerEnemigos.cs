@@ -6,10 +6,15 @@ public class SpawnerEnemigos : MonoBehaviour
     public int cantidadInicial = 5; // Cantidad inicial de enemigos
     public float spawnRate = 2f; // Tiempo entre spawns (en segundos)
     public Rect limitesSpawn; // Rectángulo de los límites de spawn
+    public int maxEnemigos = 20; // Máximo número de enemigos permitidos
+
+    private int enemigosActuales = 0; // Contador de enemigos generados
+    private ControladorEnemigos controladorEnemigos; // Referencia al controlador
 
     void Start()
     {
-        // Verificar si hay prefabs asignados
+        controladorEnemigos = FindObjectOfType<ControladorEnemigos>(); // Buscar el controlador en la escena
+
         if (prefabsEnemigos == null || prefabsEnemigos.Length == 0)
         {
             Debug.LogError("¡No hay prefabs de enemigos asignados!");
@@ -18,43 +23,50 @@ public class SpawnerEnemigos : MonoBehaviour
 
         Debug.Log("Se han asignado " + prefabsEnemigos.Length + " prefabs de enemigos.");
 
-        // Spawn inicial de enemigos
         for (int i = 0; i < cantidadInicial; i++)
         {
             SpawnEnemigo();
         }
 
-        // Comenzar a spawnear periódicamente
         InvokeRepeating(nameof(SpawnEnemigo), spawnRate, spawnRate);
     }
 
     void SpawnEnemigo()
     {
-        // Verificar que haya prefabs disponibles
-        if (prefabsEnemigos == null || prefabsEnemigos.Length == 0)
+        if (enemigosActuales >= maxEnemigos)
         {
-            Debug.LogError("No hay prefabs de enemigos disponibles. Cancela el spawn.");
-            CancelInvoke(nameof(SpawnEnemigo)); // Detener la invocación periódica
+            Debug.Log("Se ha alcanzado el límite de enemigos, deteniendo el spawn.");
+            CancelInvoke(nameof(SpawnEnemigo));
             return;
         }
 
-        // Elegir un prefab de enemigo aleatorio
-        GameObject prefabElegido = prefabsEnemigos[Random.Range(0, prefabsEnemigos.Length)];
+        if (prefabsEnemigos == null || prefabsEnemigos.Length == 0)
+        {
+            Debug.LogError("No hay prefabs de enemigos disponibles. Cancela el spawn.");
+            CancelInvoke(nameof(SpawnEnemigo));
+            return;
+        }
 
-        // Generar una posición aleatoria dentro de los límites
+        GameObject prefabElegido = prefabsEnemigos[Random.Range(0, prefabsEnemigos.Length)];
         float x = Random.Range(limitesSpawn.xMin, limitesSpawn.xMax);
         float y = Random.Range(limitesSpawn.yMin, limitesSpawn.yMax);
         Vector3 posicionSpawn = new Vector3(x, y, 0f);
 
-        // Instanciar el enemigo
-        Instantiate(prefabElegido, posicionSpawn, Quaternion.identity);
+        // ?? Instanciar el enemigo y guardar la referencia
+        GameObject nuevoEnemigo = Instantiate(prefabElegido, posicionSpawn, Quaternion.identity);
+        enemigosActuales++; // Incrementar el contador
+
+        // ?? Notificar al controlador que se ha generado un enemigo
+        if (controladorEnemigos != null)
+        {
+            controladorEnemigos.EnemigoGenerado();
+        }
 
         Debug.Log("Enemigo generado (" + prefabElegido.name + ") en posición: " + posicionSpawn);
     }
 
     private void OnDrawGizmos()
     {
-        // Visualizar los límites de spawn en el editor
         Gizmos.color = Color.green;
         Gizmos.DrawWireCube(limitesSpawn.center, new Vector3(limitesSpawn.width, limitesSpawn.height, 1f));
     }
