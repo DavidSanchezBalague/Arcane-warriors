@@ -28,7 +28,7 @@ public class JugadorVida : MonoBehaviour
         }
     }
 
-    void RestarVida(int cantidad)
+   public void RestarVida(int cantidad)
     {
         vidaActual -= cantidad; // Resta la cantidad de vida
         vidaActual = Mathf.Max(vidaActual, 0); // Asegura que la vida no sea negativa
@@ -50,5 +50,13 @@ public class JugadorVida : MonoBehaviour
     {
         // Actualiza el texto de la UI con la vida actual
         vidaText.text = "Vida: " + vidaActual;
+    }
+    public void TakeDamage(int damage)
+    {
+        vidaActual -= damage;
+        if (vidaActual <= 0)
+        {
+            Debug.Log("¡El jugador ha muerto!");// Método para manejar la muerte del jugador
+        }
     }
 }

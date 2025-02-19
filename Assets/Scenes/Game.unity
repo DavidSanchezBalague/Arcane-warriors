@@ -319,7 +319,7 @@ BoxCollider2D:
   m_GameObject: {fileID: 69568552}
   m_Enabled: 1
   m_Density: 1
-  m_Material: {fileID: 6200000, guid: 6285e93e0469306408f7df0f14cfdd5b, type: 2}
+  m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -371,7 +371,7 @@ Rigidbody2D:
   m_LinearDrag: 0
   m_AngularDrag: 0.05
   m_GravityScale: 0
-  m_Material: {fileID: 6200000, guid: a546e7a6929e6494c850a2bb0dd2663f, type: 2}
+  m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -561,7 +561,7 @@ BoxCollider2D:
   m_GameObject: {fileID: 284407920}
   m_Enabled: 1
   m_Density: 1
-  m_Material: {fileID: 6200000, guid: 6285e93e0469306408f7df0f14cfdd5b, type: 2}
+  m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -1193,7 +1193,7 @@ BoxCollider2D:
   m_GameObject: {fileID: 458837259}
   m_Enabled: 1
   m_Density: 1
-  m_Material: {fileID: 6200000, guid: 6285e93e0469306408f7df0f14cfdd5b, type: 2}
+  m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -2888,7 +2888,7 @@ BoxCollider2D:
   m_GameObject: {fileID: 1269816394}
   m_Enabled: 1
   m_Density: 1
-  m_Material: {fileID: 6200000, guid: 6285e93e0469306408f7df0f14cfdd5b, type: 2}
+  m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -3453,7 +3453,7 @@ MonoBehaviour:
     y: -30
     width: 90
     height: 60
-  maxEnemigos: 10
+  maxEnemigos: 1
 --- !u!4 &1428477632
 Transform:
   m_ObjectHideFlags: 0
