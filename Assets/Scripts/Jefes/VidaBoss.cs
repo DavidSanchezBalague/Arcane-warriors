@@ -1,16 +1,14 @@
-using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
 
-public class EnemyController : MonoBehaviour
+public class VidaBoss : MonoBehaviour
 {
     public int maxHealth = 30;
     private int currentHealth;
     public int pointsForKilling = 10;
     private SpriteRenderer spriteRenderer;
     private ControladorEnemigos controlador; // Referencia al ControladorEnemigos
-
-    public bool isBoss = false; // Marcar si este enemigo es el boss
-    public GameObject victoryPanel; // Solo el panel de victoria, NO todo el Canvas
 
     void Start()
     {
@@ -32,9 +30,9 @@ public class EnemyController : MonoBehaviour
 
     IEnumerator FlashSprite()
     {
-        spriteRenderer.enabled = false;
+        spriteRenderer.enabled = false; // Desactiva el sprite
         yield return new WaitForSeconds(0.1f);
-        spriteRenderer.enabled = true;
+        spriteRenderer.enabled = true; // Reactiva el sprite
     }
 
     void Die()
@@ -48,19 +46,10 @@ public class EnemyController : MonoBehaviour
             controlador.EnemigoEliminado();
         }
 
-        // Si este enemigo es el boss, activar solo el panel de victoria
-        if (isBoss)
-        {
-           
-            Debug.Log("¡El jugador ha muerto!");
-            // Aquí puedes implementar más lógica, como reiniciar el nivel
-            FindAnyObjectByType<VictoryScreen>().MostrarVictoria();
-        }
-
         Destroy(gameObject);
     }
 
-    public int points = 10;
+    public int points = 10; // Puntos por matar al enemigo
 
     private void OnDestroy()
     {
