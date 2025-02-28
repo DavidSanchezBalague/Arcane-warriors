@@ -18,8 +18,20 @@ public class MainMenu : MonoBehaviour
     }
     public void Play()
     {
+        LevelManager.Instance.LoadScene("Menu Levels", "");
+        //MusicManager.Instance.PlayMusic("Game");
+    }
+    public void Game1()
+    {
         LevelManager.Instance.LoadScene("Game", "CrossFade");
-        MusicManager.Instance.PlayMusic("Game");
+    }
+    public void Game2()
+    {
+        LevelManager.Instance.LoadScene("Game 2", "CrossFade");
+    }
+    public void Game3()
+    {
+        LevelManager.Instance.LoadScene("Game 3 real", "CrossFade");
     }
     public void Quit()
     {
@@ -48,5 +60,11 @@ public class MainMenu : MonoBehaviour
     {
         musicSlider.value = PlayerPrefs.GetFloat("MusicVolume");
         sfxSlider.value = PlayerPrefs.GetFloat("SFXVolume");
+    }
+    public void ResetearProgreso()
+    {
+        PlayerPrefs.SetInt("NivelDesbloqueado", 1);
+        PlayerPrefs.Save();
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 }

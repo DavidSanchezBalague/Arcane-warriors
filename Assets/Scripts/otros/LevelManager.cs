@@ -1,4 +1,4 @@
-using System.Collections;
+ using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
@@ -37,11 +37,26 @@ public class LevelManager : MonoBehaviour
     {
         StartCoroutine(LoadSceneAsync(sceneName, transitionName));
     }
+    public void LoadScene2(string sceneName)
+    {
+        StartCoroutine(LoadSceneAsync(sceneName, ""));
+    }
 
     private IEnumerator LoadSceneAsync(string sceneName, string transitionName)
     {
-        SceneTransition transition = transitions.First(t => t.name == transitionName);
+        // Verifica si hay una transición válida
+        SceneTransition transition = transitions.FirstOrDefault(t => t.name == transitionName);
 
+        // Si NO hay transición, carga la escena directamente
+        if (string.IsNullOrEmpty(transitionName) || transition == null)
+        {
+            Debug.Log($"Cargando '{sceneName}' directamente, sin transición.");
+
+            yield return SceneManager.LoadSceneAsync(sceneName);
+            yield break; // Termina la corrutina aquí
+        }
+
+        // Si hay transición, seguir con el flujo normal
         AsyncOperation scene = SceneManager.LoadSceneAsync(sceneName);
         scene.allowSceneActivation = false;
 
@@ -61,6 +76,7 @@ public class LevelManager : MonoBehaviour
 
         yield return transition.AnimateTransitionOut();
     }
+
 
     private IEnumerator AnimateProgressBar(AsyncOperation scene)
     {
