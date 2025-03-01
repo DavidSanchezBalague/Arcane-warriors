@@ -33,13 +33,18 @@ public class ControladorEnemigos : MonoBehaviour
 
     void GenerarBoss()
     {
-        if (bossPrefab != null)
+        if (bossGenerado) return; // Evitar doble generación
+
+        if (bossPrefab == null)
         {
-            Vector3 posicionBoss = new Vector3(0, 0, 0); // Posición central o donde prefieras
-            Instantiate(bossPrefab, posicionBoss, Quaternion.identity);
-            Debug.Log("¡Boss generado!");
-            bossGenerado = true;
+            Debug.LogError("Error: El prefab del jefe es NULL, asegúrate de asignarlo correctamente.");
+            return;
         }
+
+        Vector3 posicionBoss = new Vector3(0, 0, 0); // Posición central o donde prefieras
+        Instantiate(bossPrefab, posicionBoss, Quaternion.identity);
+        Debug.Log("¡Boss generado!");
+        bossGenerado = true;
     }
 
     private void ActualizarEnemigos()

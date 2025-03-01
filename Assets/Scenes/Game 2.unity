@@ -2130,6 +2130,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   victoryPanel: {fileID: 678884244}
+  nivelActual: 0
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
@@ -5517,7 +5518,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 19bb4436754cf574eaf44590e6a589a4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bossPrefab: {fileID: 7526632167817330993, guid: 4ae1f2528e404f24dbf5399fc7d3b011, type: 3}
+  bossPrefab: {fileID: 7374759974109708889, guid: 50baaa63e9c99b3408f36c01f1fb1c08, type: 3}
   spawner: {fileID: 1428477631}
 --- !u!1001 &1436390609
 PrefabInstance:

@@ -58,9 +58,13 @@ public class MainMenu : MonoBehaviour
 
     public void LoadVolume()
     {
-        musicSlider.value = PlayerPrefs.GetFloat("MusicVolume");
-        sfxSlider.value = PlayerPrefs.GetFloat("SFXVolume");
+        if (musicSlider != null)
+            musicSlider.value = PlayerPrefs.GetFloat("MusicVolume", 0.5f); // Valor por defecto
+
+        if (sfxSlider != null)
+            sfxSlider.value = PlayerPrefs.GetFloat("SFXVolume", 0.5f); // Valor por defecto
     }
+
     public void ResetearProgreso()
     {
         PlayerPrefs.SetInt("NivelDesbloqueado", 1);

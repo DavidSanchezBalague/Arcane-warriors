@@ -21,6 +21,8 @@ public class SpawnerEnemigos : MonoBehaviour
             return;
         }
 
+
+
         Debug.Log("Se han asignado " + prefabsEnemigos.Length + " prefabs de enemigos.");
 
         for (int i = 0; i < cantidadInicial; i++)
