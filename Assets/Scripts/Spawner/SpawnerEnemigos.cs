@@ -14,7 +14,7 @@ public class SpawnerEnemigos : MonoBehaviour
     void Start()
     {
         controladorEnemigos = FindObjectOfType<ControladorEnemigos>(); // Buscar el controlador en la escena
-
+        GameObject prefabElegido = prefabsEnemigos[Random.Range(0, prefabsEnemigos.Length)];
         if (prefabsEnemigos == null || prefabsEnemigos.Length == 0)
         {
             Debug.LogError("¡No hay prefabs de enemigos asignados!");
