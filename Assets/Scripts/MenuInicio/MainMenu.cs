@@ -15,6 +15,7 @@ public class MainMenu : MonoBehaviour
     {
         MusicManager.Instance.PlayMusic("MainMenu");
         LoadVolume();
+
     }
     public void Play()
     {
@@ -23,15 +24,17 @@ public class MainMenu : MonoBehaviour
     }
     public void Game1()
     {
-        LevelManager.Instance.LoadScene("Game", "CrossFade");
+        LevelManager.Instance.LoadSceneWithImage("Game", "CrossFade", 0);
     }
+
     public void Game2()
     {
-        LevelManager.Instance.LoadScene("Game 2", "CrossFade");
+        LevelManager.Instance.LoadSceneWithImage("Game 2", "CrossFade", 1);
     }
+
     public void Game3()
     {
-        LevelManager.Instance.LoadScene("Game 3 real", "CrossFade");
+        LevelManager.Instance.LoadSceneWithImage("Game 3 Buena", "CrossFade", 2);
     }
     public void Quit()
     {
@@ -67,8 +70,11 @@ public class MainMenu : MonoBehaviour
 
     public void ResetearProgreso()
     {
-        PlayerPrefs.SetInt("NivelDesbloqueado", 1);
+        PlayerPrefs.SetInt("NivelDesbloqueado", 1); // Asegura que empieza en 1
         PlayerPrefs.Save();
+        Debug.Log("Progreso reiniciado: NivelDesbloqueado = 1");
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
+
+
 }

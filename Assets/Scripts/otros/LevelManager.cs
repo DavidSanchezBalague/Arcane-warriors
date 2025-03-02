@@ -15,6 +15,9 @@ public class LevelManager : MonoBehaviour
     private SceneTransition[] transitions;
     private bool isAnimatingBar;
 
+    public Image crossFadeImage; // La imagen del CrossFade
+    public Sprite[] levelBackgrounds; // Array de imágenes para cada nivel
+
     private void Awake()
     {
         if (Instance == null)
@@ -37,10 +40,53 @@ public class LevelManager : MonoBehaviour
     {
         StartCoroutine(LoadSceneAsync(sceneName, transitionName));
     }
-    public void LoadScene2(string sceneName)
+    public void LoadSceneWithImage(string sceneName, string transitionName, int levelIndex)
     {
-        StartCoroutine(LoadSceneAsync(sceneName, ""));
+        if (levelIndex >= 0 && levelIndex < levelBackgrounds.Length)
+        {
+            crossFadeImage.sprite = levelBackgrounds[levelIndex];
+            crossFadeImage.color = new Color(1, 1, 1, 1);
+            Debug.Log("Asignando imagen de transición: " + crossFadeImage.sprite.name);
+        }
+
+        StartCoroutine(LoadSceneWithImageAsync(sceneName, transitionName));
     }
+
+
+    private IEnumerator LoadSceneWithImageAsync(string sceneName, string transitionName)
+    {
+        yield return null; // Espera un frame para que Unity actualice la imagen
+
+        SceneTransition transition = transitions.FirstOrDefault(t => t.name == transitionName);
+
+        if (string.IsNullOrEmpty(transitionName) || transition == null)
+        {
+            Debug.Log($"Cargando '{sceneName}' directamente, sin transición.");
+            yield return SceneManager.LoadSceneAsync(sceneName);
+            yield break;
+        }
+
+        AsyncOperation scene = SceneManager.LoadSceneAsync(sceneName);
+        scene.allowSceneActivation = false;
+
+        yield return transition.AnimateTransitionIn();
+
+        progressBar.gameObject.SetActive(true);
+        isAnimatingBar = true;
+
+        StartCoroutine(AnimateProgressBar(scene));
+
+        yield return new WaitForSeconds(fakeLoadDuration);
+
+        scene.allowSceneActivation = true;
+        isAnimatingBar = false;
+
+        progressBar.gameObject.SetActive(false);
+
+        yield return transition.AnimateTransitionOut();
+    }
+
+
 
     private IEnumerator LoadSceneAsync(string sceneName, string transitionName)
     {
