@@ -22,13 +22,13 @@ public class GameOver : MonoBehaviour
     {
         Time.timeScale = 1;
         ScoreManager.Instance.ResetScore();
-        LevelManager.Instance.LoadScene("Game 2", "CrossFade");
+        LevelManager.Instance.LoadSceneWithImage("Game 2", "CrossFade", 1);
     }
     public void Game3()
     {
         Time.timeScale = 1;
         ScoreManager.Instance.ResetScore();
-        LevelManager.Instance.LoadScene("Game 3 real", "CrossFade");
+        LevelManager.Instance.LoadSceneWithImage("Game 3 Buena", "CrossFade", 2);
     }
 
     public void ReiniciarNivel()

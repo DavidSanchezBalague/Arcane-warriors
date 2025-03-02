@@ -1991,7 +1991,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   victoryPanel: {fileID: 736339540}
-  nivelActual: 0
+  nivelActual: 3
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0

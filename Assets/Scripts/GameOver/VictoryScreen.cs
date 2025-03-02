@@ -15,12 +15,13 @@ public class VictoryScreen : MonoBehaviour
     void NivelCompletado()
     {
         int nivelDesbloqueado = PlayerPrefs.GetInt("NivelDesbloqueado", 1);
+        Debug.Log("Nivel desbloqueado antes de actualizar: " + nivelDesbloqueado);
 
-        // Si el nivel actual es el más alto desbloqueado, desbloquear el siguiente nivel
-        if (nivelActual >= nivelDesbloqueado)
+        if (nivelActual >= nivelDesbloqueado) // Si es el último nivel desbloqueado
         {
             PlayerPrefs.SetInt("NivelDesbloqueado", nivelActual + 1);
             PlayerPrefs.Save();
+            Debug.Log("Nuevo nivel desbloqueado: " + (nivelActual + 1));
         }
     }
 
