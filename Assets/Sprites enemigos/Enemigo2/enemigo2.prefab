@@ -173,7 +173,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2b86630509c029948a7f1f116c8db1bc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  velocidad: 10
+  velocidad: 15
   distanciaMinima: 1.5
 --- !u!114 &2102763274905244488
 MonoBehaviour:
@@ -189,6 +189,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHealth: 30
   pointsForKilling: 10
+  isBoss: 0
+  victoryPanel: {fileID: 0}
   points: 10
 --- !u!114 &8310918770760461677
 MonoBehaviour:

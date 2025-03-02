@@ -4531,6 +4531,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2738564909360343695, guid: 6c855fb97e3f88b478dca6d0c09ae46d, type: 3}
+      propertyPath: velocidad
+      value: 18
+      objectReference: {fileID: 0}
     - target: {fileID: 3106744286207271519, guid: 6c855fb97e3f88b478dca6d0c09ae46d, type: 3}
       propertyPath: m_Name
       value: enemigo2 (1)

@@ -137,7 +137,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1535529654910413273, guid: 56e59576ec0105c4497e4a7c36ebe109, type: 3}
       propertyPath: maxHealth
-      value: 200
+      value: 250
       objectReference: {fileID: 0}
     - target: {fileID: 3596122209876473173, guid: 56e59576ec0105c4497e4a7c36ebe109, type: 3}
       propertyPath: m_Name
@@ -190,6 +190,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bulletPrefab: {fileID: 652362500794398836, guid: 0bb2350576c7c2c4c8045dff07eff23f, type: 3}
   firePoint: {fileID: 4326567808804680861}
-  numberOfBullets: 8
-  bulletSpeed: 5
-  fireRate: 2
+  numberOfBullets: 10
+  bulletSpeed: 10
+  fireRate: 1.5

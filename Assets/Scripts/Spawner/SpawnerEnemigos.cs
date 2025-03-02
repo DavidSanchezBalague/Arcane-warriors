@@ -49,23 +49,46 @@ public class SpawnerEnemigos : MonoBehaviour
             return;
         }
 
-        GameObject prefabElegido = prefabsEnemigos[Random.Range(0, prefabsEnemigos.Length)];
+        // Elegir un prefab no nulo
+        GameObject prefabElegido = null;
+        int intentos = 10; // Evita bucles infinitos en caso de muchos nulls
+
+        while (intentos > 0)
+        {
+            prefabElegido = prefabsEnemigos[Random.Range(0, prefabsEnemigos.Length)];
+            if (prefabElegido != null) break;
+            intentos--;
+        }
+
+        if (prefabElegido == null)
+        {
+            Debug.LogError("No se pudo encontrar un prefab válido tras varios intentos.");
+            return;
+        }
+
         float x = Random.Range(limitesSpawn.xMin, limitesSpawn.xMax);
         float y = Random.Range(limitesSpawn.yMin, limitesSpawn.yMax);
         Vector3 posicionSpawn = new Vector3(x, y, 0f);
 
-        // ?? Instanciar el enemigo y guardar la referencia
-        GameObject nuevoEnemigo = Instantiate(prefabElegido, posicionSpawn, Quaternion.identity);
-        enemigosActuales++; // Incrementar el contador
-
-        // ?? Notificar al controlador que se ha generado un enemigo
-        if (controladorEnemigos != null)
+        // Validar antes de instanciar
+        if (prefabElegido != null)
         {
-            controladorEnemigos.EnemigoGenerado();
-        }
+            GameObject nuevoEnemigo = Instantiate(prefabElegido, posicionSpawn, Quaternion.identity);
+            enemigosActuales++;
 
-        Debug.Log("Enemigo generado (" + prefabElegido.name + ") en posición: " + posicionSpawn);
+            if (controladorEnemigos != null)
+            {
+                controladorEnemigos.EnemigoGenerado();
+            }
+
+            Debug.Log("Enemigo generado (" + prefabElegido.name + ") en posición: " + posicionSpawn);
+        }
+        else
+        {
+            Debug.LogError("El prefab elegido es null justo antes de instanciarlo.");
+        }
     }
+
 
     private void OnDrawGizmos()
     {

@@ -5490,7 +5490,7 @@ MonoBehaviour:
     y: -30
     width: 90
     height: 60
-  maxEnemigos: 2
+  maxEnemigos: 13
 --- !u!4 &1428477632
 Transform:
   m_ObjectHideFlags: 0

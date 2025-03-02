@@ -1,4 +1,4 @@
-using UnityEngine;
+ï»¿using UnityEngine;
 using UnityEngine.UI; // Necesario para trabajar con la UI
 
 public class BarraDeVida : MonoBehaviour
@@ -8,7 +8,7 @@ public class BarraDeVida : MonoBehaviour
 
     void Start()
     {
-        // Inicializar el valor máximo del slider al inicio
+        // Inicializar el valor mï¿½ximo del slider al inicio
         slider.maxValue = vidaPersonaje.vidaMaxima;
         slider.value = vidaPersonaje.vidaMaxima; // Establecer la vida inicial
     }

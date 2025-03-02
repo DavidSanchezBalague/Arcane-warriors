@@ -1,8 +1,8 @@
-using UnityEngine;
+ï»¿using UnityEngine;
 
 public class BulletController : MonoBehaviour
 {
-    public int damage = 10; // Daño que causa la bala
+    public int damage = 10; // Dao que causa la bala
 
     void OnTriggerEnter2D(Collider2D collision)
     {
@@ -16,9 +16,9 @@ public class BulletController : MonoBehaviour
                 enemy.TakeDamage(damage); // Restar vida al enemigo
             }
 
-            // Destruir la bala inmediatamente y salir del método
+            // Destruir la bala inmediatamente y salir del mï¿½todo
             Destroy(gameObject);
-            return; // Nos aseguramos de no continuar después de destruir la bala
+            return; // Nos aseguramos de no continuar despuï¿½s de destruir la bala
         }
     }
 
