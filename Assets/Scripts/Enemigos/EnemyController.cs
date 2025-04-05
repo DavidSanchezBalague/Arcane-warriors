@@ -6,6 +6,7 @@ public class EnemyController : MonoBehaviour
     public int maxHealth = 30;
     private int currentHealth;
     public int pointsForKilling = 10;
+    public GameObject monedaPrefab;
     private SpriteRenderer spriteRenderer;
     private ControladorEnemigos controlador; // Referencia al ControladorEnemigos
 
@@ -46,6 +47,11 @@ public class EnemyController : MonoBehaviour
         if (controlador != null)
         {
             controlador.EnemigoEliminado();
+        }
+
+        if (monedaPrefab != null)
+        {
+            Instantiate(monedaPrefab, transform.position, Quaternion.identity);
         }
 
         // Si este enemigo es el boss, activar solo el panel de victoria
