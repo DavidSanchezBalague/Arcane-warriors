@@ -5,6 +5,7 @@ TagManager:
   serializedVersion: 2
   tags:
   - Enemigo
+  - Moneda
   layers:
   - Default
   - TransparentFX

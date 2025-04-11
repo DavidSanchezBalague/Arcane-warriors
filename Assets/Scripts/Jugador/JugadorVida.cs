@@ -5,58 +5,68 @@ using UnityEngine.UI;
 public class JugadorVida : MonoBehaviour
 {
     [SerializeField] Slider sliderVidas;
-    public int vidaInicial = 100; // Vida inicial del jugador
-    private int vidaActual; // Vida actual del jugador
-    
-
     public TextMeshProUGUI vidaText; // Referencia al TextMeshPro del Canvas
+    private VidaPersonaje vidaJugador; // Referencia al script VidaPersonaje
 
     void Start()
     {
-        vidaActual = vidaInicial; // Inicializa la vida actual
-        sliderVidas.maxValue = vidaInicial;
-        sliderVidas.value = sliderVidas.maxValue;
-        ActualizarTextoVida(); // Actualiza la UI al inicio
-    }
+        vidaJugador = FindObjectOfType<VidaPersonaje>(); // Encuentra el componente VidaPersonaje
 
-    void OnCollisionEnter2D(Collision2D collision)
-    {
-        // Detecta si el jugador colisiona con un enemigo
-        if (collision.gameObject.CompareTag("Enemigo"))
+        if (vidaJugador != null)
         {
-            RestarVida(10); // Resta 10 de vida al jugador
+            sliderVidas.maxValue = vidaJugador.vidaMaxima; // Establece el máximo de la barra
+            sliderVidas.value = vidaJugador.vidaActual; // Establece el valor inicial de la barra
+            ActualizarTextoVida(); // Actualiza el texto al inicio
+        }
+        else
+        {
+            Debug.LogError("No se encontró el componente VidaPersonaje.");
         }
     }
 
-   public void RestarVida(int cantidad)
+    void Update()
     {
-        vidaActual -= cantidad; // Resta la cantidad de vida
-        vidaActual = Mathf.Max(vidaActual, 0); // Asegura que la vida no sea negativa
-        Debug.Log("Vida actual: " + vidaActual); // Muestra en la consola la vida actual
-
-        sliderVidas.value = vidaActual;
-        ActualizarTextoVida(); // Actualiza el texto de vida en pantalla
-
-        // Si la vida llega a 0, puedes manejar la lógica de muerte aquí
-        if (vidaActual <= 0)
+        // Sincroniza constantemente la barra de vida con la vida actual del personaje
+        if (vidaJugador != null)
         {
-            Debug.Log("¡El jugador ha muerto!");
-            // Aquí puedes implementar más lógica, como reiniciar el nivel
-            FindAnyObjectByType<GameOver>().MostrarGameOver();
+            sliderVidas.value = vidaJugador.vidaActual;
+            ActualizarTextoVida();
         }
     }
 
+    // Método que actualiza el texto de la vida en la UI
     void ActualizarTextoVida()
     {
-        // Actualiza el texto de la UI con la vida actual
-        vidaText.text = "Vida: " + vidaActual;
+        if (vidaJugador != null)
+        {
+            vidaText.text = "Vida: " + vidaJugador.vidaActual;
+        }
     }
+
+    // Método para curar la vida del jugador
+    public void CurarVida(int cantidad)
+    {
+        if (vidaJugador != null)
+        {
+            vidaJugador.CurarVida(cantidad); // Llama al método de VidaPersonaje para curar
+        }
+    }
+
+    // Método para recibir daño
+    public void RestarVida(int cantidad)
+    {
+        if (vidaJugador != null)
+        {
+            vidaJugador.RestarVida(cantidad); // Llama al método de VidaPersonaje para restar vida
+        }
+    }
+
+    // Método adicional para manejar el daño (si se requiere en otras clases)
     public void TakeDamage(int damage)
     {
-        vidaActual -= damage;
-        if (vidaActual <= 0)
+        if (vidaJugador != null)
         {
-            Debug.Log("¡El jugador ha muerto!");// Método para manejar la muerte del jugador
+            vidaJugador.RestarVida(damage); // Llama al método de VidaPersonaje para restar vida
         }
     }
 }

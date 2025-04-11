@@ -7,6 +7,7 @@ public class VidaPersonaje : MonoBehaviour
     public bool estaVivo { get; private set; } = true; // Bandera de vida del jugador
     [SerializeField] private GameObject backUpCamera;
     [SerializeField] private Camera playerCamera;
+
     void Start()
     {
         // Inicializar la vida actual al máximo al inicio
@@ -39,6 +40,16 @@ public class VidaPersonaje : MonoBehaviour
             estaVivo = false; // Marcar al jugador como muerto
             Morir();
         }
+    }
+
+    public void CurarVida(int cantidad)
+    {
+        if (!estaVivo) return; // No curar si el jugador está muerto
+
+        vidaActual += cantidad;
+        vidaActual = Mathf.Clamp(vidaActual, 0, vidaMaxima); // Asegura que no se pase de la vida máxima
+
+        Debug.Log("Vida curada. Nueva vida: " + vidaActual);
     }
 
     private void Morir()
