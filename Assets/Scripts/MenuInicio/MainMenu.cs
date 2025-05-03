@@ -19,7 +19,7 @@ public class MainMenu : MonoBehaviour
     }
     public void Play()
     {
-        LevelManager.Instance.LoadScene("Menu Levels", "");
+        LevelManager.Instance.LoadScene("EleccionPersonaje", "");
         //MusicManager.Instance.PlayMusic("Game");
     }
     public void Game1()
