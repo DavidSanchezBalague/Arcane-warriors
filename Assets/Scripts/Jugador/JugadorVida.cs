@@ -10,24 +10,39 @@ public class JugadorVida : MonoBehaviour
 
     void Start()
     {
-        vidaJugador = FindObjectOfType<VidaPersonaje>(); // Encuentra el componente VidaPersonaje
-
-        if (vidaJugador != null)
+        // Buscar automáticamente el Slider si no está asignado
+        if (sliderVidas == null)
         {
-            sliderVidas.maxValue = vidaJugador.vidaMaxima; // Establece el máximo de la barra
-            sliderVidas.value = vidaJugador.vidaActual; // Establece el valor inicial de la barra
-            ActualizarTextoVida(); // Actualiza el texto al inicio
+            GameObject sliderGO = GameObject.Find("SliderVidas");
+            if (sliderGO != null)
+                sliderVidas = sliderGO.GetComponent<Slider>();
+        }
+
+        // Buscar automáticamente el Text si no está asignado
+        if (vidaText == null)
+        {
+            GameObject textoGO = GameObject.Find("VidaText");
+            if (textoGO != null)
+                vidaText = textoGO.GetComponent<TextMeshProUGUI>();
+        }
+
+        vidaJugador = FindObjectOfType<VidaPersonaje>();
+
+        if (vidaJugador != null && sliderVidas != null)
+        {
+            sliderVidas.maxValue = vidaJugador.vidaMaxima;
+            sliderVidas.value = vidaJugador.vidaActual;
+            ActualizarTextoVida();
         }
         else
         {
-            Debug.LogError("No se encontró el componente VidaPersonaje.");
+            Debug.LogWarning("Faltan referencias: VidaPersonaje, Slider o Texto.");
         }
     }
 
     void Update()
     {
-        // Sincroniza constantemente la barra de vida con la vida actual del personaje
-        if (vidaJugador != null)
+        if (vidaJugador != null && sliderVidas != null)
         {
             sliderVidas.value = vidaJugador.vidaActual;
             ActualizarTextoVida();
