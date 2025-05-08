@@ -57,7 +57,7 @@ public class EnemyController : MonoBehaviour
         // Si este enemigo es el boss, activar solo el panel de victoria
         if (isBoss)
         {
-           
+
             Debug.Log("¡El jugador ha muerto!");
             // Aquí puedes implementar más lógica, como reiniciar el nivel
             FindAnyObjectByType<VictoryScreen>().MostrarVictoria();

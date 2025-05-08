@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class EconomyManager : MonoBehaviour
 {
@@ -13,7 +14,7 @@ public class EconomyManager : MonoBehaviour
         if (Instance == null)
         {
             Instance = this;
-            DontDestroyOnLoad(gameObject); // Persistencia entre escenas
+           // DontDestroyOnLoad(gameObject); // Persistencia entre escenas
         }
         else
         {
@@ -48,4 +49,33 @@ public class EconomyManager : MonoBehaviour
     {
         return monedas;
     }
+
+    private void OnEnable()
+    {
+        SceneManager.sceneLoaded += OnSceneLoaded;
+    }
+
+    private void OnDisable()
+    {
+        SceneManager.sceneLoaded -= OnSceneLoaded;
+    }
+
+    private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    {
+        // Busca una nueva instancia de UIEconomia en la nueva escena
+        uiEconomia = FindObjectOfType<UIEconomia>();
+
+        // Actualiza el texto con la cantidad actual
+        if (uiEconomia != null)
+            uiEconomia.ActualizarMonedas(monedas);
+    }
+
+    public void ReiniciarMonedas()
+    {
+        monedas = 0;
+        if (uiEconomia != null)
+            uiEconomia.ActualizarMonedas(monedas);
+    }
+
+
 }

@@ -36,6 +36,7 @@ public class GameOver : MonoBehaviour
         Time.timeScale = 1;
 
         ScoreManager.Instance.ResetScore();
+        EconomyManager.Instance.ReiniciarMonedas();
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 
@@ -43,6 +44,7 @@ public class GameOver : MonoBehaviour
     {
         Time.timeScale = 1;
         ScoreManager.Instance.ResetScore();
+        EconomyManager.Instance.ReiniciarMonedas();
         SceneManager.LoadScene("Menu");
     }
 

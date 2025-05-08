@@ -1,87 +1,103 @@
 using UnityEngine;
-using TMPro; // Necesario si usas TextMeshPro
+using TMPro;
 using UnityEngine.UI;
 
 public class JugadorVida : MonoBehaviour
 {
-    [SerializeField] Slider sliderVidas;
-    public TextMeshProUGUI vidaText; // Referencia al TextMeshPro del Canvas
-    private VidaPersonaje vidaJugador; // Referencia al script VidaPersonaje
+    [SerializeField] private Slider sliderVidas;
+    public TextMeshProUGUI vidaText;
+    private VidaPersonaje vidaJugador;
+
+    [SerializeField] private GameObject gameOverPanel; // ? Correcto
+
 
     void Start()
     {
-        // Buscar automáticamente el Slider si no está asignado
         if (sliderVidas == null)
         {
-            GameObject sliderGO = GameObject.Find("SliderVidas");
+            GameObject sliderGO = GameObject.Find("Slider");
             if (sliderGO != null)
                 sliderVidas = sliderGO.GetComponent<Slider>();
+            else
+                Debug.LogWarning("No se encontró el Slider en la escena.");
         }
 
-        // Buscar automáticamente el Text si no está asignado
         if (vidaText == null)
         {
             GameObject textoGO = GameObject.Find("VidaText");
             if (textoGO != null)
                 vidaText = textoGO.GetComponent<TextMeshProUGUI>();
+            else
+                Debug.LogWarning("No se encontró VidaText en la escena.");
         }
 
         vidaJugador = FindObjectOfType<VidaPersonaje>();
 
-        if (vidaJugador != null && sliderVidas != null)
-        {
-            sliderVidas.maxValue = vidaJugador.vidaMaxima;
-            sliderVidas.value = vidaJugador.vidaActual;
-            ActualizarTextoVida();
-        }
-        else
-        {
-            Debug.LogWarning("Faltan referencias: VidaPersonaje, Slider o Texto.");
-        }
+        // Oculta el panel de Game Over al iniciar
+        if (gameOverPanel != null)
+            gameOverPanel.SetActive(false);
     }
 
-    void Update()
+    private void Update()
     {
-        if (vidaJugador != null && sliderVidas != null)
-        {
+        if (vidaJugador == null) return;
+
+        if (sliderVidas != null)
             sliderVidas.value = vidaJugador.vidaActual;
-            ActualizarTextoVida();
+
+        ActualizarTextoVida();
+
+        // Verifica si el jugador está muerto
+        if (!vidaJugador.estaVivo && gameOverPanel != null && !gameOverPanel.activeSelf)
+        {
+            gameOverPanel.SetActive(true);
         }
+
+
     }
 
-    // Método que actualiza el texto de la vida en la UI
     void ActualizarTextoVida()
     {
-        if (vidaJugador != null)
+        if (vidaJugador != null && vidaText != null)
         {
             vidaText.text = "Vida: " + vidaJugador.vidaActual;
         }
     }
 
-    // Método para curar la vida del jugador
     public void CurarVida(int cantidad)
     {
         if (vidaJugador != null)
         {
-            vidaJugador.CurarVida(cantidad); // Llama al método de VidaPersonaje para curar
+            vidaJugador.CurarVida(cantidad);
         }
     }
 
-    // Método para recibir daño
     public void RestarVida(int cantidad)
     {
         if (vidaJugador != null)
         {
-            vidaJugador.RestarVida(cantidad); // Llama al método de VidaPersonaje para restar vida
+            vidaJugador.RestarVida(cantidad);
         }
     }
 
-    // Método adicional para manejar el daño (si se requiere en otras clases)
     public void TakeDamage(int damage)
     {
         if (vidaJugador != null)
         {
-            vidaJugador.RestarVida(damage); // Llama al método de VidaPersonaje para restar vida
+            vidaJugador.RestarVida(damage);
         }
+    }
+
+    public void AsignarVida(VidaPersonaje personaje)
+    {
+        vidaJugador = personaje;
+
+        if (sliderVidas != null)
+        {
+            sliderVidas.maxValue = vidaJugador.vidaMaxima;
+            sliderVidas.value = vidaJugador.vidaActual;
+        }
+
+        ActualizarTextoVida();
     }
 }

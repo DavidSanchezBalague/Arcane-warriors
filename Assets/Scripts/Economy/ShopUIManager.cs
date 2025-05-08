@@ -8,8 +8,8 @@ public class ShopUIManager : MonoBehaviour
     public enum ShopItem
     {
         SubirVelocidad,
-        CurarVida, // Añadido el ítem de curar vida
-        // más ítems después
+        CurarVida, // A?adido el ?tem de curar vida
+        // m?s ?tems despu?s
     }
 
     private VidaPersonaje vidaJugador; // Referencia a VidaPersonaje
@@ -25,23 +25,37 @@ public class ShopUIManager : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.T))
         {
-            Debug.Log("¡T presionada!");
+            Debug.Log("?T presionada!");
             tiendaAbierta = !tiendaAbierta;
             tiendaUI.SetActive(tiendaAbierta);
             Time.timeScale = tiendaAbierta ? 0 : 1;
         }
     }
 
-    // Función pública para el botón "Subir Velocidad"
+    public void cerrar()
+    {
+        tiendaAbierta = false;
+        tiendaUI.SetActive(false);
+        Time.timeScale = 1;
+
+        ControladorEnemigos controlador = FindObjectOfType<ControladorEnemigos>();
+        if (controlador != null)
+        {
+            controlador.TiendaCerrada();
+        }
+    }
+
+
+    // Funci?n p?blica para el bot?n "Subir Velocidad"
     public void ComprarSubirVelocidad()
     {
         ComprarItem(ShopItem.SubirVelocidad, 1); // Puedes cambiar el precio
     }
 
-    // Función pública para el botón "Curar Vida"
+    // Funci?n p?blica para el bot?n "Curar Vida"
     public void ComprarCurarVida()
     {
-        ComprarItem(ShopItem.CurarVida, 3); // Precio para curar vida, ajusta según lo que necesites
+        ComprarItem(ShopItem.CurarVida, 3); // Precio para curar vida, ajusta seg?n lo que necesites
     }
 
     private void ComprarItem(ShopItem item, int precio)
@@ -51,7 +65,7 @@ public class ShopUIManager : MonoBehaviour
             // Aplicar el efecto de la compra (como subir velocidad o curar vida)
             AplicarEfecto(item);
 
-            // Actualizar la UI de las monedas después de la compra
+            // Actualizar la UI de las monedas despu?s de la compra
             if (EconomyManager.Instance.uiEconomia != null)
             {
                 EconomyManager.Instance.uiEconomia.ActualizarMonedas(EconomyManager.Instance.ObtenerMonedas());
@@ -68,6 +82,13 @@ public class ShopUIManager : MonoBehaviour
     {
         Walk jugador = FindObjectOfType<Walk>(); // Si tienes movimiento, lo puedes usar
 
+        if (vidaJugador == null)
+            vidaJugador = FindObjectOfType<VidaPersonaje>();
+
+        if (jugadorVidaUI == null)
+            jugadorVidaUI = FindObjectOfType<JugadorVida>();
+
+
         switch (item)
         {
             case ShopItem.SubirVelocidad:
@@ -75,23 +96,24 @@ public class ShopUIManager : MonoBehaviour
                 {
                     jugador.moveSpeed += 20f;
                     Debug.Log("Velocidad aumentada. Nueva velocidad: " + jugador.moveSpeed);
-                  
+
                 }
                 break;
 
             case ShopItem.CurarVida:
+                Debug.Log("Intentando curar vida...");
+                Debug.Log("vidaJugador: " + vidaJugador);
+                Debug.Log("jugadorVidaUI: " + jugadorVidaUI);
+
                 if (vidaJugador != null && jugadorVidaUI != null)
                 {
-                    int cantidadCurar = 20; // La cantidad de vida que se cura
-
-                    // Llamar al método de curar vida en JugadorVida
+                    int cantidadCurar = 20;
                     jugadorVidaUI.CurarVida(cantidadCurar);
-
                     Debug.Log("Vida curada. Nueva vida: " + vidaJugador.vidaActual);
                 }
                 break;
 
-                // Aquí puedes agregar más efectos luego
+                // Aqu? puedes agregar m?s efectos luego
         }
     }
 

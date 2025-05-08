@@ -57,16 +57,26 @@ public class VidaPersonaje : MonoBehaviour
         SoundManager.Instance.PlaySound3D("hurtPlayer", transform.position);
         Debug.Log("¡El jugador ha muerto!");
 
-        // Ejemplo: desactivar el jugador (puedes cambiar esto por otras acciones, como reiniciar nivel, animación de muerte, etc.)
+        // Desactivar el jugador
         gameObject.SetActive(false);
+
+        // Activar cámara de respaldo
         if (backUpCamera != null)
-        {
-            backUpCamera.SetActive(true); // Activar la cámara de respaldo
-        }
+            backUpCamera.SetActive(true);
 
         if (playerCamera != null)
+            playerCamera.gameObject.SetActive(false);
+
+        // Mostrar Game Over
+        GameOver gameOverManager = FindAnyObjectByType<GameOver>();
+        if (gameOverManager != null)
         {
-            playerCamera.gameObject.SetActive(false); // Desactivar la cámara del jugador
+            gameOverManager.MostrarGameOver();
+        }
+        else
+        {
+            Debug.LogWarning("No se encontró el script GameOver en la escena.");
         }
     }
+
 }

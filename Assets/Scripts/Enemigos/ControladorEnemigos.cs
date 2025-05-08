@@ -2,54 +2,94 @@ using UnityEngine;
 
 public class ControladorEnemigos : MonoBehaviour
 {
-    public GameObject bossPrefab; // Prefab del jefe final
-    public SpawnerEnemigos spawner; // Referencia al spawner de enemigos
+    public GameObject bossPrefab;
+    public SpawnerEnemigos spawner;
+    public GameObject tiendaCanvas; // Asigna el canvas de la tienda en el inspector
 
     private int enemigosRestantes = 0;
+    private int oleadaActual = 0;
+    private int totalOleadas = 2;
+    private bool esperandoTienda = false;
     private bool bossGenerado = false;
+    public int enemigosOleada1 = 3;
+    public int enemigosOleada2 = 3;
 
     void Start()
     {
-        // Esperar un pequeño tiempo para asegurarse de que el spawner ya ha generado los enemigos
-        Invoke(nameof(ActualizarEnemigos), 0.1f);
+        IniciarOleada();
     }
 
     public void EnemigoGenerado()
     {
         enemigosRestantes++;
-        Debug.Log("Enemigos actuales: " + enemigosRestantes);
     }
 
     public void EnemigoEliminado()
     {
         enemigosRestantes--;
-        Debug.Log("Enemigo eliminado. Restantes: " + enemigosRestantes);
 
-        if (enemigosRestantes <= 0 && !bossGenerado)
+        // Si el boss ya fue generado, no mostrar tienda
+        if (bossGenerado)
+        {
+            return;
+        }
+
+        if (enemigosRestantes <= 0 && !esperandoTienda)
+        {
+            esperandoTienda = true;
+            MostrarTienda();
+        }
+    }
+
+    void MostrarTienda()
+    {
+        Time.timeScale = 0;
+        tiendaCanvas.SetActive(true);
+    }
+
+    public void TiendaCerrada() // Llamado desde ShopUIManager cuando se cierra la tienda
+    {
+        Time.timeScale = 1;
+        tiendaCanvas.SetActive(false);
+
+        esperandoTienda = false;
+
+        if (oleadaActual < totalOleadas)
+        {
+            IniciarOleada();
+        }
+        else
         {
             GenerarBoss();
         }
     }
 
-    void GenerarBoss()
+    void IniciarOleada()
     {
-        if (bossGenerado) return; // Evitar doble generación
+        oleadaActual++;
+        enemigosRestantes = 0;
 
-        if (bossPrefab == null)
+        int cantidadEnemigos = 0;
+
+        if (oleadaActual == 1)
         {
-            Debug.LogError("Error: El prefab del jefe es NULL, asegúrate de asignarlo correctamente.");
-            return;
+            cantidadEnemigos = enemigosOleada1;
+        }
+        else if (oleadaActual == 2)
+        {
+            cantidadEnemigos = enemigosOleada2;
         }
 
-        Vector3 posicionBoss = new Vector3(0, 0, 0); // Posición central o donde prefieras
-        Instantiate(bossPrefab, posicionBoss, Quaternion.identity);
-        Debug.Log("¡Boss generado!");
-        bossGenerado = true;
+        spawner.SpawnOleada(cantidadEnemigos);
+        Debug.Log("Oleada " + oleadaActual + " iniciada con " + cantidadEnemigos + " enemigos.");
     }
 
-    private void ActualizarEnemigos()
+    void GenerarBoss()
     {
-        enemigosRestantes = GameObject.FindGameObjectsWithTag("Enemigo").Length;
-        Debug.Log("Número de enemigos al inicio: " + enemigosRestantes);
+        if (bossGenerado || bossPrefab == null) return;
+
+        Instantiate(bossPrefab, Vector3.zero, Quaternion.identity);
+        bossGenerado = true;
+        Debug.Log("¡Boss generado!");
     }
 }
