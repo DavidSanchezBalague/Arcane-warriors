@@ -10,6 +10,7 @@ public class ShopUIManager : MonoBehaviour
         SubirVelocidad,
         CurarVida, // A?adido el ?tem de curar vida
         // m?s ?tems despu?s
+        TripleDisparoNinja
     }
 
     private VidaPersonaje vidaJugador; // Referencia a VidaPersonaje
@@ -57,6 +58,20 @@ public class ShopUIManager : MonoBehaviour
     {
         ComprarItem(ShopItem.CurarVida, 3); // Precio para curar vida, ajusta seg?n lo que necesites
     }
+
+    public void ComprarTripleDisparoNinja()
+    {
+        // Solo permite si el personaje es el Ninja (índice 1)
+        if (PlayerPrefs.GetInt("PersonajeElegido") == 1)
+        {
+            ComprarItem(ShopItem.TripleDisparoNinja, 1); // Precio 5 monedas (ajústalo)
+        }
+        else
+        {
+            Debug.Log("Este modificador es solo para el Ninja.");
+        }
+    }
+
 
     private void ComprarItem(ShopItem item, int precio)
     {
@@ -112,6 +127,15 @@ public class ShopUIManager : MonoBehaviour
                     Debug.Log("Vida curada. Nueva vida: " + vidaJugador.vidaActual);
                 }
                 break;
+
+            case ShopItem.TripleDisparoNinja:
+                GunController gun = FindObjectOfType<GunController>();
+                if (gun != null)
+                {
+                    gun.ActivarTripleDisparo();  // llamamos al nuevo método
+                }
+                break;
+
 
                 // Aqu? puedes agregar m?s efectos luego
         }

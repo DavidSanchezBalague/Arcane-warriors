@@ -105,6 +105,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sliderVidas: {fileID: 0}
   vidaText: {fileID: 0}
+  gameOverPanel: {fileID: 0}
 --- !u!114 &6187047734164674742
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -224,7 +225,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 6642591815208236297}
   pistol: {fileID: 142118156666307809}
-  bulletPrefab: {fileID: 652362500794398836, guid: 29e20611a44883c48be4ece53a5d4933, type: 3}
+  bulletPrefab: {fileID: 652362500794398836, guid: 3a1c62617bda2da46bece6522758a50a, type: 3}
   bulletSpeed: 20
   fireRate: 0.5
 --- !u!1 &7002705787081612496
@@ -275,7 +276,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &2054675895178640938
 Transform:
   m_ObjectHideFlags: 0

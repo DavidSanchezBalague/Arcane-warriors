@@ -1,4 +1,4 @@
-using UnityEngine;
+﻿using UnityEngine;
 
 public class GunController : MonoBehaviour
 {
@@ -55,16 +55,49 @@ public class GunController : MonoBehaviour
 
     void Shoot(Transform target)
     {
+        Vector2 baseDirection = (target.position - pistol.position).normalized;
+        float spreadAngle = 15f; // grados de separación entre balas
+
+        if (tripleDisparoActivado)
+        {
+            DispararEnDireccion(RotateVector(baseDirection, -spreadAngle));
+            DispararEnDireccion(baseDirection);
+            DispararEnDireccion(RotateVector(baseDirection, spreadAngle));
+        }
+        else
+        {
+            DispararEnDireccion(baseDirection);
+        }
+    }
+
+    void DispararEnDireccion(Vector2 direction)
+    {
         GameObject bullet = Instantiate(bulletPrefab, pistol.position, pistol.rotation);
+        Rigidbody2D rb = bullet.GetComponent<Rigidbody2D>();
 
         SoundManager.Instance.PlaySound3D("Shoot", transform.position);
 
-        Vector2 direction = (target.position - pistol.position).normalized;
-
-        Rigidbody2D rb = bullet.GetComponent<Rigidbody2D>();
         if (rb != null)
         {
             rb.velocity = direction * bulletSpeed;
         }
+    }
+
+    Vector2 RotateVector(Vector2 v, float degrees)
+    {
+        float radians = degrees * Mathf.Deg2Rad;
+        float sin = Mathf.Sin(radians);
+        float cos = Mathf.Cos(radians);
+        float newX = v.x * cos - v.y * sin;
+        float newY = v.x * sin + v.y * cos;
+        return new Vector2(newX, newY).normalized;
+    }
+
+
+    private bool tripleDisparoActivado = false;
+
+    public void ActivarTripleDisparo()
+    {
+        tripleDisparoActivado = true;
     }
 }
