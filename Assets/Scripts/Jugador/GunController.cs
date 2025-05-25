@@ -8,6 +8,9 @@ public class GunController : MonoBehaviour
     public float bulletSpeed = 10f;
     public float fireRate = 0.5f;
     private float nextFireTime = 0f;
+    private float nextLanzaTime = 0f;  // Para controlar el tiempo del ataque especial
+    public float lanzaCooldown = 2f;   // Ajusta el cooldown como quieras
+
 
     void Update()
     {
@@ -23,6 +26,13 @@ public class GunController : MonoBehaviour
                 nextFireTime = Time.time + fireRate;
             }
         }
+
+        if (lanzaExplosivaActivada && Time.time >= nextLanzaTime)
+        {
+            LanzarLanzas();
+            nextLanzaTime = Time.time + lanzaCooldown;
+        }
+
     }
 
     Transform FindClosestEnemy()
@@ -70,9 +80,32 @@ public class GunController : MonoBehaviour
         }
     }
 
+    void LanzarLanzas()
+    {
+        Vector2[] direcciones = new Vector2[]
+        {
+        Vector2.up,
+        Vector2.down,
+        Vector2.left,
+        Vector2.right,
+        new Vector2(1, 1).normalized,
+        new Vector2(-1, 1).normalized,
+        new Vector2(1, -1).normalized,
+        new Vector2(-1, -1).normalized
+        };
+
+        foreach (Vector2 dir in direcciones)
+        {
+            DispararEnDireccion(dir);
+        }
+
+        nextFireTime = Time.time + fireRate; // para evitar spam
+    }
+
+
     void DispararEnDireccion(Vector2 direction)
     {
-        GameObject bullet = Instantiate(bulletPrefab, pistol.position, pistol.rotation);
+        GameObject bullet = Instantiate(bulletPrefab, pistol.position, Quaternion.identity);
         Rigidbody2D rb = bullet.GetComponent<Rigidbody2D>();
 
         SoundManager.Instance.PlaySound3D("Shoot", transform.position);
@@ -81,7 +114,12 @@ public class GunController : MonoBehaviour
         {
             rb.velocity = direction * bulletSpeed;
         }
+
+        // Alinear la rotación de la bala con la dirección en la que se mueve
+        float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
+        bullet.transform.rotation = Quaternion.Euler(0, 0, angle);
     }
+
 
     Vector2 RotateVector(Vector2 v, float degrees)
     {
@@ -99,5 +137,12 @@ public class GunController : MonoBehaviour
     public void ActivarTripleDisparo()
     {
         tripleDisparoActivado = true;
+    }
+
+    private bool lanzaExplosivaActivada = false;
+
+    public void ActivarLanzaExplosiva()
+    {
+        lanzaExplosivaActivada = true;
     }
 }

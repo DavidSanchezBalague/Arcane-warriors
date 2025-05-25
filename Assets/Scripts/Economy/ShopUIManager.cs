@@ -8,25 +8,23 @@ public class ShopUIManager : MonoBehaviour
     public enum ShopItem
     {
         SubirVelocidad,
-        CurarVida, // A?adido el ?tem de curar vida
-        // m?s ?tems despu?s
-        TripleDisparoNinja
+        CurarVida,
+        HabilidadEspecial
     }
 
-    private VidaPersonaje vidaJugador; // Referencia a VidaPersonaje
-    private JugadorVida jugadorVidaUI; // Referencia a JugadorVida (para actualizar la UI)
+    private VidaPersonaje vidaJugador;
+    private JugadorVida jugadorVidaUI;
 
     void Start()
     {
-        vidaJugador = FindObjectOfType<VidaPersonaje>(); // Encuentra el componente VidaPersonaje
-        jugadorVidaUI = FindObjectOfType<JugadorVida>(); // Encuentra el componente JugadorVida
+        vidaJugador = FindObjectOfType<VidaPersonaje>();
+        jugadorVidaUI = FindObjectOfType<JugadorVida>();
     }
 
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.T))
         {
-            Debug.Log("?T presionada!");
             tiendaAbierta = !tiendaAbierta;
             tiendaUI.SetActive(tiendaAbierta);
             Time.timeScale = tiendaAbierta ? 0 : 1;
@@ -46,41 +44,28 @@ public class ShopUIManager : MonoBehaviour
         }
     }
 
-
-    // Funci?n p?blica para el bot?n "Subir Velocidad"
     public void ComprarSubirVelocidad()
     {
-        ComprarItem(ShopItem.SubirVelocidad, 1); // Puedes cambiar el precio
+        ComprarItem(ShopItem.SubirVelocidad, 1);
     }
 
-    // Funci?n p?blica para el bot?n "Curar Vida"
     public void ComprarCurarVida()
     {
-        ComprarItem(ShopItem.CurarVida, 3); // Precio para curar vida, ajusta seg?n lo que necesites
+        ComprarItem(ShopItem.CurarVida, 3);
     }
 
-    public void ComprarTripleDisparoNinja()
+    // ?? NUEVO: único botón para habilidad especial
+    public void ComprarHabilidadEspecial()
     {
-        // Solo permite si el personaje es el Ninja (índice 1)
-        if (PlayerPrefs.GetInt("PersonajeElegido") == 1)
-        {
-            ComprarItem(ShopItem.TripleDisparoNinja, 1); // Precio 5 monedas (ajústalo)
-        }
-        else
-        {
-            Debug.Log("Este modificador es solo para el Ninja.");
-        }
+        ComprarItem(ShopItem.HabilidadEspecial, 2); // Ajusta el precio si quieres
     }
-
 
     private void ComprarItem(ShopItem item, int precio)
     {
         if (EconomyManager.Instance.GastarMonedas(precio))
         {
-            // Aplicar el efecto de la compra (como subir velocidad o curar vida)
             AplicarEfecto(item);
 
-            // Actualizar la UI de las monedas despu?s de la compra
             if (EconomyManager.Instance.uiEconomia != null)
             {
                 EconomyManager.Instance.uiEconomia.ActualizarMonedas(EconomyManager.Instance.ObtenerMonedas());
@@ -92,17 +77,15 @@ public class ShopUIManager : MonoBehaviour
         }
     }
 
-
     private void AplicarEfecto(ShopItem item)
     {
-        Walk jugador = FindObjectOfType<Walk>(); // Si tienes movimiento, lo puedes usar
+        Walk jugador = FindObjectOfType<Walk>();
 
         if (vidaJugador == null)
             vidaJugador = FindObjectOfType<VidaPersonaje>();
 
         if (jugadorVidaUI == null)
             jugadorVidaUI = FindObjectOfType<JugadorVida>();
-
 
         switch (item)
         {
@@ -111,15 +94,10 @@ public class ShopUIManager : MonoBehaviour
                 {
                     jugador.moveSpeed += 20f;
                     Debug.Log("Velocidad aumentada. Nueva velocidad: " + jugador.moveSpeed);
-
                 }
                 break;
 
             case ShopItem.CurarVida:
-                Debug.Log("Intentando curar vida...");
-                Debug.Log("vidaJugador: " + vidaJugador);
-                Debug.Log("jugadorVidaUI: " + jugadorVidaUI);
-
                 if (vidaJugador != null && jugadorVidaUI != null)
                 {
                     int cantidadCurar = 20;
@@ -128,17 +106,30 @@ public class ShopUIManager : MonoBehaviour
                 }
                 break;
 
-            case ShopItem.TripleDisparoNinja:
+            case ShopItem.HabilidadEspecial:
                 GunController gun = FindObjectOfType<GunController>();
                 if (gun != null)
                 {
-                    gun.ActivarTripleDisparo();  // llamamos al nuevo método
+                    int personaje = PlayerPrefs.GetInt("PersonajeElegido");
+
+                    switch (personaje)
+                    {
+                        case 0: // Gladiador
+                            gun.ActivarLanzaExplosiva();
+                            Debug.Log("Lanza explosiva activada para Gladiador.");
+                            Debug.Log("PersonajeElegido (PlayerPrefs): " + personaje);
+
+                            break;
+
+                        case 1: // Ninja
+                            gun.ActivarTripleDisparo();
+                            Debug.Log("Triple disparo activado para Ninja.");
+                            Debug.Log("PersonajeElegido (PlayerPrefs): " + personaje);
+
+                            break;
+                    }
                 }
                 break;
-
-
-                // Aqu? puedes agregar m?s efectos luego
         }
     }
-
 }
