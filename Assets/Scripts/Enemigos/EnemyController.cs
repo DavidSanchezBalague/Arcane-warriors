@@ -1,4 +1,4 @@
-using UnityEngine;
+ï»¿using UnityEngine;
 using System.Collections;
 
 public class EnemyController : MonoBehaviour
@@ -12,6 +12,8 @@ public class EnemyController : MonoBehaviour
 
     public bool isBoss = false; // Marcar si este enemigo es el boss
     public GameObject victoryPanel; // Solo el panel de victoria, NO todo el Canvas
+    private bool estaMuerto = false;
+
 
     void Start()
     {
@@ -40,10 +42,12 @@ public class EnemyController : MonoBehaviour
 
     void Die()
     {
+        if (estaMuerto) return; // â›” Ya estÃ¡ muriendo, salir
+        estaMuerto = true;      // âœ… Marcar como muerto
+
         ScoreManager.Instance.AddPoints(pointsForKilling);
         SoundManager.Instance.PlaySound3D("hurt", transform.position);
 
-        // Notificar al controlador que este enemigo murió
         if (controlador != null)
         {
             controlador.EnemigoEliminado();
@@ -54,17 +58,14 @@ public class EnemyController : MonoBehaviour
             Instantiate(monedaPrefab, transform.position, Quaternion.identity);
         }
 
-        // Si este enemigo es el boss, activar solo el panel de victoria
         if (isBoss)
         {
-
-            Debug.Log("¡El jugador ha muerto!");
-            // Aquí puedes implementar más lógica, como reiniciar el nivel
             FindAnyObjectByType<VictoryScreen>().MostrarVictoria();
         }
 
         Destroy(gameObject);
     }
+
 
     public int points = 10;
 
