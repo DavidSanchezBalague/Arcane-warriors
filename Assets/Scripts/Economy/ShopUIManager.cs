@@ -1,8 +1,15 @@
 using UnityEngine;
+using UnityEngine.UI;
 
 public class ShopUIManager : MonoBehaviour
 {
+    public GameObject bloqueoVelocidad;
+    public GameObject bloqueoCurar;
+    public GameObject bloqueoEspecial;
     public GameObject tiendaUI;
+    public Button botonVelocidad;
+    public Button botonCurar;
+    public Button botonEspecial;
     private bool tiendaAbierta = false;
 
     public enum ShopItem
@@ -27,6 +34,12 @@ public class ShopUIManager : MonoBehaviour
         {
             tiendaAbierta = !tiendaAbierta;
             tiendaUI.SetActive(tiendaAbierta);
+
+            if (tiendaAbierta)
+            {
+                StartCoroutine(EsperarYActualizarBloqueos());
+            }
+
             Time.timeScale = tiendaAbierta ? 0 : 1;
         }
     }
@@ -43,7 +56,11 @@ public class ShopUIManager : MonoBehaviour
             controlador.TiendaCerrada();
         }
     }
-
+    private System.Collections.IEnumerator EsperarYActualizarBloqueos()
+    {
+        yield return null; // espera 1 frame
+        ActualizarBloqueos();
+    }
     public void ComprarSubirVelocidad()
     {
         ComprarItem(ShopItem.SubirVelocidad, 1);
@@ -69,12 +86,30 @@ public class ShopUIManager : MonoBehaviour
             if (EconomyManager.Instance.uiEconomia != null)
             {
                 EconomyManager.Instance.uiEconomia.ActualizarMonedas(EconomyManager.Instance.ObtenerMonedas());
+                ActualizarBloqueos();
             }
         }
         else
         {
             Debug.Log("No tienes suficientes monedas.");
         }
+    }
+
+    private void ActualizarBloqueos()
+    {
+        int monedas = EconomyManager.Instance.ObtenerMonedas();
+
+        bool puedeVelocidad = monedas >= 1;
+        bool puedeCurar = monedas >= 3;
+        bool puedeEspecial = monedas >= 5;
+
+        bloqueoVelocidad.SetActive(!puedeVelocidad);
+        bloqueoCurar.SetActive(!puedeCurar);
+        bloqueoEspecial.SetActive(!puedeEspecial);
+
+        botonVelocidad.interactable = puedeVelocidad;
+        botonCurar.interactable = puedeCurar;
+        botonEspecial.interactable = puedeEspecial;
     }
 
     private void AplicarEfecto(ShopItem item)
