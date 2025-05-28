@@ -5557,7 +5557,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: -1
-  m_Sprite: {fileID: 21300000, guid: 1b32829052bf9794da49caacc2b287f8, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 273c8327f65fb7d40a4f2b9ab5499433, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -7346,11 +7346,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   prefabsEnemigos:
-  - {fileID: 3596122209876473173, guid: 56e59576ec0105c4497e4a7c36ebe109, type: 3}
-  - {fileID: 3596122209876473173, guid: 56e59576ec0105c4497e4a7c36ebe109, type: 3}
-  - {fileID: 3596122209876473173, guid: 56e59576ec0105c4497e4a7c36ebe109, type: 3}
-  - {fileID: 3596122209876473173, guid: 56e59576ec0105c4497e4a7c36ebe109, type: 3}
-  - {fileID: 3596122209876473173, guid: 56e59576ec0105c4497e4a7c36ebe109, type: 3}
+  - {fileID: 3596122209876473173, guid: 732a699eb2135d247b9e42961dd77d8e, type: 3}
   limitesSpawn:
     serializedVersion: 2
     x: -45
@@ -7388,7 +7384,7 @@ MonoBehaviour:
   tiendaCanvas: {fileID: 106177410}
   enemigosOleada1: 3
   enemigosOleada2: 3
-  bossPrefab: {fileID: 7374759974109708889, guid: 5435e2253f12d3a418a9825d3df14a5d, type: 3}
+  bossPrefab: {fileID: 7374759974109708889, guid: 50baaa63e9c99b3408f36c01f1fb1c08, type: 3}
 --- !u!1001 &1436390609
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -9480,7 +9476,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 4547fdf1e73b98145bed76b1b91f4c2e, type: 3}
+  m_Sprite: {fileID: 21300000, guid: d5998cfcdb91cf34eaa0639ac4c00040, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -9583,7 +9579,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 518089448}
         m_TargetAssemblyTypeName: GameOver, Assembly-CSharp
-        m_MethodName: Game2
+        m_MethodName: Game3
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

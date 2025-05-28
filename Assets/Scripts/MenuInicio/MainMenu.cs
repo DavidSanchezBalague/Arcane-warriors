@@ -29,12 +29,12 @@ public class MainMenu : MonoBehaviour
 
     public void Game2()
     {
-        LevelManager.Instance.LoadSceneWithImage("Game 2", "CrossFade", 1);
+        LevelManager.Instance.LoadSceneWithImage("Game2FINAL", "CrossFade", 1);
     }
 
     public void Game3()
     {
-        LevelManager.Instance.LoadSceneWithImage("Game 3 Buena", "CrossFade", 2);
+        LevelManager.Instance.LoadSceneWithImage("Game3FINAL", "CrossFade", 2);
     }
     public void Quit()
     {
