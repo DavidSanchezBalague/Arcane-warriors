@@ -195,6 +195,11 @@ public class ShopUIManager : MonoBehaviour
                             Debug.Log("PersonajeElegido (PlayerPrefs): " + personaje);
 
                             break;
+
+                        case 2: // Mago
+                            gun.ActivarAuraArcana();
+                            Debug.Log("Aura Arcana");
+                            break;
                     }
                 }
                 break;

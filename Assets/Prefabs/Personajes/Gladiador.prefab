@@ -346,3 +346,4 @@ MonoBehaviour:
   bulletSpeed: 20
   fireRate: 0.5
   lanzaCooldown: 2
+  auraObject: {fileID: 6742892152330944887, guid: b74ca0ce8c3e85740bd05e02114f5088, type: 3}

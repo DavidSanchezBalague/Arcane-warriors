@@ -10,6 +10,16 @@ public class GunController : MonoBehaviour
     private float nextFireTime = 0f;
     private float nextLanzaTime = 0f;  // Para controlar el tiempo del ataque especial
     public float lanzaCooldown = 2f;   // Ajusta el cooldown como quieras
+                                       //---
+
+    public GameObject auraObject;  // Arrastrar aquí el child Aura
+    private bool auraArcanaActivada = false;
+
+    void Start()
+    {
+        // Asegurarse de que arranca desactivado
+        auraObject.SetActive(false);
+    }
 
 
     void Update()
@@ -144,5 +154,15 @@ public class GunController : MonoBehaviour
     public void ActivarLanzaExplosiva()
     {
         lanzaExplosivaActivada = true;
+    }
+
+
+    public void ActivarAuraArcana()
+    {
+        if (!auraArcanaActivada)
+        {
+            auraArcanaActivada = true;
+            auraObject.SetActive(true);
+        }
     }
 }

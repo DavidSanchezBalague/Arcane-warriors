@@ -228,6 +228,8 @@ MonoBehaviour:
   bulletPrefab: {fileID: 652362500794398836, guid: 3a1c62617bda2da46bece6522758a50a, type: 3}
   bulletSpeed: 20
   fireRate: 0.5
+  lanzaCooldown: 2
+  auraObject: {fileID: 6742892152330944887, guid: b74ca0ce8c3e85740bd05e02114f5088, type: 3}
 --- !u!1 &7002705787081612496
 GameObject:
   m_ObjectHideFlags: 0
