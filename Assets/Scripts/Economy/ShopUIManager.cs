@@ -1,3 +1,4 @@
+﻿using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -34,15 +35,38 @@ public class ShopUIManager : MonoBehaviour
         {
             tiendaAbierta = !tiendaAbierta;
             tiendaUI.SetActive(tiendaAbierta);
+            Time.timeScale = tiendaAbierta ? 0 : 1;
 
             if (tiendaAbierta)
             {
-                StartCoroutine(EsperarYActualizarBloqueos());
+                StartCoroutine(ActualizarBloqueosConDelay());
             }
-
-            Time.timeScale = tiendaAbierta ? 0 : 1;
         }
     }
+    private IEnumerator ActualizarBloqueosConDelay()
+    {
+        yield return null; // espera 1 frame
+        Debug.Log("✔ Corrutina ejecutada. Monedas actuales: " + EconomyManager.Instance.ObtenerMonedas());
+        ActualizarBloqueos();
+    }
+
+    private System.Collections.IEnumerator EsperarYActualizarBloqueos()
+    {
+        yield return null; // espera 1 frame para asegurarse de que todo se ha activado
+        Debug.Log("✔ Corrutina: actualizando bloqueos tras un frame");
+        ActualizarBloqueos();
+    }
+
+    void OnEnable()
+    {
+        Debug.Log(">>> OnEnable llamado. tiendaUI activa: " + (tiendaUI != null && tiendaUI.activeSelf));
+
+        if (tiendaUI != null && tiendaUI.activeSelf)
+        {
+            ActualizarBloqueos();
+        }
+    }
+
 
     public void cerrar()
     {
@@ -56,11 +80,6 @@ public class ShopUIManager : MonoBehaviour
             controlador.TiendaCerrada();
         }
     }
-    private System.Collections.IEnumerator EsperarYActualizarBloqueos()
-    {
-        yield return null; // espera 1 frame
-        ActualizarBloqueos();
-    }
     public void ComprarSubirVelocidad()
     {
         ComprarItem(ShopItem.SubirVelocidad, 1);
@@ -71,7 +90,7 @@ public class ShopUIManager : MonoBehaviour
         ComprarItem(ShopItem.CurarVida, 3);
     }
 
-    // ?? NUEVO: �nico bot�n para habilidad especial
+    // ?? NUEVO: único botón para habilidad especial
     public void ComprarHabilidadEspecial()
     {
         ComprarItem(ShopItem.HabilidadEspecial, 2); // Ajusta el precio si quieres
@@ -95,9 +114,12 @@ public class ShopUIManager : MonoBehaviour
         }
     }
 
+
+
     private void ActualizarBloqueos()
     {
         int monedas = EconomyManager.Instance.ObtenerMonedas();
+        Debug.Log("ACTUALIZAR BLOQUEOS → Monedas actuales: " + monedas);
 
         bool puedeVelocidad = monedas >= 1;
         bool puedeCurar = monedas >= 3;
@@ -107,9 +129,20 @@ public class ShopUIManager : MonoBehaviour
         bloqueoCurar.SetActive(!puedeCurar);
         bloqueoEspecial.SetActive(!puedeEspecial);
 
+        Debug.Log("Bloqueo velocidad: " + !puedeVelocidad + " | Bloqueo curar: " + !puedeCurar + " | Bloqueo especial: " + !puedeEspecial);
+
         botonVelocidad.interactable = puedeVelocidad;
         botonCurar.interactable = puedeCurar;
         botonEspecial.interactable = puedeEspecial;
+    }
+
+    public void AbrirTienda()
+    {
+        tiendaAbierta = true;
+        tiendaUI.SetActive(true);
+        Time.timeScale = 0;
+
+        StartCoroutine(ActualizarBloqueosConDelay());
     }
 
     private void AplicarEfecto(ShopItem item)

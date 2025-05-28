@@ -26,7 +26,15 @@ public class ControladorEnemigos : MonoBehaviour
     {
         tiendaManual = true;
         Time.timeScale = 0;
-        tiendaCanvas.SetActive(true);
+        ShopUIManager shop = FindObjectOfType<ShopUIManager>();
+        if (shop != null)
+        {
+            shop.AbrirTienda();
+        }
+        else
+        {
+            Debug.LogWarning("No se encontró el ShopUIManager para abrir la tienda.");
+        }
     }
 
     // Interno: cuando realmente acabas la oleada
@@ -34,13 +42,22 @@ public class ControladorEnemigos : MonoBehaviour
     {
         esperandoTienda = true;
         Time.timeScale = 0;
-        tiendaCanvas.SetActive(true);
+        ShopUIManager shop = FindObjectOfType<ShopUIManager>();
+        if (shop != null)
+        {
+            shop.AbrirTienda();
+        }
+        else
+        {
+            Debug.LogWarning("No se encontró el ShopUIManager para abrir la tienda.");
+        }
     }
 
     public void EnemigoGenerado()
     {
         enemigosRestantes++;
     }
+
 
     public void EnemigoEliminado()
     {
