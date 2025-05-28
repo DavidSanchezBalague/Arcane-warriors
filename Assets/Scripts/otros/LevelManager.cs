@@ -1,4 +1,4 @@
- using System.Collections;
+Ôªø using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
@@ -10,13 +10,13 @@ public class LevelManager : MonoBehaviour
 
     public Slider progressBar;
     public GameObject transitionsContainer;
-    public float fakeLoadDuration = 2f; // 2 segundos de duraciÛn
+    public float fakeLoadDuration = 2f; // 2 segundos de duraci√≥n
 
     private SceneTransition[] transitions;
     private bool isAnimatingBar;
 
     public Image crossFadeImage; // La imagen del CrossFade
-    public Sprite[] levelBackgrounds; // Array de im·genes para cada nivel
+    public Sprite[] levelBackgrounds; // Array de im√°genes para cada nivel
 
     private void Awake()
     {
@@ -46,7 +46,7 @@ public class LevelManager : MonoBehaviour
         {
             crossFadeImage.sprite = levelBackgrounds[levelIndex];
             crossFadeImage.color = new Color(1, 1, 1, 1);
-            Debug.Log("Asignando imagen de transiciÛn: " + crossFadeImage.sprite.name);
+            Debug.Log("Asignando imagen de transici√≥n: " + crossFadeImage.sprite.name);
         }
 
         StartCoroutine(LoadSceneWithImageAsync(sceneName, transitionName));
@@ -55,13 +55,12 @@ public class LevelManager : MonoBehaviour
 
     private IEnumerator LoadSceneWithImageAsync(string sceneName, string transitionName)
     {
-        yield return null; // Espera un frame para que Unity actualice la imagen
+        yield return null;
 
         SceneTransition transition = transitions.FirstOrDefault(t => t.name == transitionName);
 
         if (string.IsNullOrEmpty(transitionName) || transition == null)
         {
-            Debug.Log($"Cargando '{sceneName}' directamente, sin transiciÛn.");
             yield return SceneManager.LoadSceneAsync(sceneName);
             yield break;
         }
@@ -71,57 +70,71 @@ public class LevelManager : MonoBehaviour
 
         yield return transition.AnimateTransitionIn();
 
-        progressBar.gameObject.SetActive(true);
-        isAnimatingBar = true;
+        // üî• Aqu√≠ detectamos si queremos usar barra o no
+        bool usarBarra = transitionName != "FastFade";
 
-        StartCoroutine(AnimateProgressBar(scene));
-
-        yield return new WaitForSeconds(fakeLoadDuration);
+        if (usarBarra)
+        {
+            progressBar.gameObject.SetActive(true);
+            isAnimatingBar = true;
+            StartCoroutine(AnimateProgressBar(scene));
+            yield return new WaitForSeconds(fakeLoadDuration);
+            isAnimatingBar = false;
+            progressBar.gameObject.SetActive(false);
+        }
+        else
+        {
+            yield return new WaitForSeconds(0.25f); // Lo mismo que dura el fade
+        }
 
         scene.allowSceneActivation = true;
-        isAnimatingBar = false;
-
-        progressBar.gameObject.SetActive(false);
 
         yield return transition.AnimateTransitionOut();
     }
+
 
 
 
     private IEnumerator LoadSceneAsync(string sceneName, string transitionName)
     {
-        // Verifica si hay una transiciÛn v·lida
         SceneTransition transition = transitions.FirstOrDefault(t => t.name == transitionName);
 
-        // Si NO hay transiciÛn, carga la escena directamente
         if (string.IsNullOrEmpty(transitionName) || transition == null)
         {
-            Debug.Log($"Cargando '{sceneName}' directamente, sin transiciÛn.");
-
             yield return SceneManager.LoadSceneAsync(sceneName);
-            yield break; // Termina la corrutina aquÌ
+            yield break;
         }
 
-        // Si hay transiciÛn, seguir con el flujo normal
         AsyncOperation scene = SceneManager.LoadSceneAsync(sceneName);
         scene.allowSceneActivation = false;
 
         yield return transition.AnimateTransitionIn();
 
-        progressBar.gameObject.SetActive(true);
-        isAnimatingBar = true;
+        // üõ†Ô∏è Control del loading bar tambi√©n aqu√≠:
+        bool usarBarra = transitionName != "FastFade";
 
-        StartCoroutine(AnimateProgressBar(scene));
+        if (usarBarra)
+        {
+            progressBar.gameObject.SetActive(true);
+            isAnimatingBar = true;
 
-        yield return new WaitForSeconds(fakeLoadDuration);
+            StartCoroutine(AnimateProgressBar(scene));
+
+            yield return new WaitForSeconds(fakeLoadDuration);
+
+            isAnimatingBar = false;
+            progressBar.gameObject.SetActive(false);
+        }
+        else
+        {
+            yield return new WaitForSeconds(0.25f); // o 0.5f, lo que dure el fade
+        }
 
         scene.allowSceneActivation = true;
-        isAnimatingBar = false;
-
-        progressBar.gameObject.SetActive(false);
 
         yield return transition.AnimateTransitionOut();
     }
+
 
 
     private IEnumerator AnimateProgressBar(AsyncOperation scene)

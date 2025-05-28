@@ -59,6 +59,6 @@ public class SeleccionPersonaje : MonoBehaviour
     public void SeleccionarPersonaje()
     {
         PlayerPrefs.SetInt("PersonajeElegido", personajeActual);
-        LevelManager.Instance.LoadSceneWithImage("Menu Levels", "CrossFade", 0); // Ir a menu de niveles
+        LevelManager.Instance.LoadSceneWithImage("Menu Levels", "FastFade", 0); // Ir a menu de niveles
     }
 }
