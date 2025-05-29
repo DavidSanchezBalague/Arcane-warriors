@@ -24,6 +24,15 @@ EditorBuildSettings:
     path: Assets/Scenes/Game3FINAL.unity
     guid: 6d19502fc952aeb4fb9a5e34626fe795
   - enabled: 1
+    path: Assets/Scenes/Game4FINAL.unity
+    guid: 085ef6985c322864ba360f302627bb5d
+  - enabled: 1
+    path: Assets/Scenes/Game5FINAL.unity
+    guid: 510987817b40e3b47b2b3978d48e7c44
+  - enabled: 1
+    path: Assets/Scenes/Game6FINAL.unity
+    guid: e44ec1be057e87a4793c2fae2d47e15b
+  - enabled: 1
     path: Assets/Scenes/ESTENO.unity
     guid: 6be307c0347614641a7679a83e645bdc
   - enabled: 1

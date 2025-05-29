@@ -36,6 +36,18 @@ public class MainMenu : MonoBehaviour
     {
         LevelManager.Instance.LoadSceneWithImage("Game3FINAL", "CrossFade", 2);
     }
+    public void Game4()
+    {
+        LevelManager.Instance.LoadSceneWithImage("Game4FINAL", "CrossFade", 3);
+    }
+    public void Game5()
+    {
+        LevelManager.Instance.LoadSceneWithImage("Game5FINAL", "CrossFade", 4);
+    }
+    public void Game6()
+    {
+        LevelManager.Instance.LoadSceneWithImage("Game6FINAL", "CrossFade", 5);
+    }
     public void Quit()
     {
         Application.Quit();

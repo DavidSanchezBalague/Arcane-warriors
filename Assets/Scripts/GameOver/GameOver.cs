@@ -30,6 +30,24 @@ public class GameOver : MonoBehaviour
         ScoreManager.Instance.ResetScore();
         LevelManager.Instance.LoadSceneWithImage("Game3FINAL", "CrossFade", 2);
     }
+    public void Game4()
+    {
+        Time.timeScale = 1;
+        ScoreManager.Instance.ResetScore();
+        LevelManager.Instance.LoadSceneWithImage("Game4FINAL", "CrossFade", 3);
+    }
+    public void Game5()
+    {
+        Time.timeScale = 1;
+        ScoreManager.Instance.ResetScore();
+        LevelManager.Instance.LoadSceneWithImage("Game5FINAL", "CrossFade", 4);
+    }
+    public void Game6()
+    {
+        Time.timeScale = 1;
+        ScoreManager.Instance.ResetScore();
+        LevelManager.Instance.LoadSceneWithImage("Game6FINAL", "CrossFade", 5);
+    }
 
     public void ReiniciarNivel()
     {
