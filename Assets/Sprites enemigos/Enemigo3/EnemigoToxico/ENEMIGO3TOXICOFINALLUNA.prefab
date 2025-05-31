@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 1535529654910413273}
   - component: {fileID: -50292634787543608}
   m_Layer: 0
-  m_Name: ENEMIGO3FINAL
+  m_Name: ENEMIGO3TOXICOFINALLUNA
   m_TagString: Enemigo
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -78,7 +78,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 49ee725cca7b88840bbe7d9e2e616048, type: 3}
+  m_Sprite: {fileID: 21300000, guid: e2e1afe02cb024a458e82deaf6cbfbd1, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -189,7 +189,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHealth: 50
   pointsForKilling: 10
-  monedaPrefab: {fileID: 2478377979779296265, guid: 223b36081d7ee514d9d555d0409a0e93, type: 3}
+  monedaPrefab: {fileID: 4896077806164692866, guid: 8b45b578458783d4585141a6cbcf1fdc, type: 3}
   isBoss: 0
   victoryPanel: {fileID: 0}
   points: 10
@@ -206,14 +206,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   walkSprites:
-  - {fileID: 21300000, guid: 49ee725cca7b88840bbe7d9e2e616048, type: 3}
-  - {fileID: 21300000, guid: 487a0c018c411df44869b85e066ffb31, type: 3}
-  - {fileID: 21300000, guid: 1ad2c2048afc667488009a84ad9c0a31, type: 3}
-  - {fileID: 21300000, guid: 6fb098a286231b74ca5f63f6c45ff0d8, type: 3}
-  - {fileID: 21300000, guid: 6dd0af44734d8e343803212a21ba6287, type: 3}
-  - {fileID: 21300000, guid: 5f6ead2f3c6810a49a3c337aea9c4fb2, type: 3}
-  - {fileID: 21300000, guid: b4c7d9529edd131479f05e865a66cea7, type: 3}
-  - {fileID: 21300000, guid: ed314f2913b2fe440943a539c8056226, type: 3}
+  - {fileID: 21300000, guid: e2e1afe02cb024a458e82deaf6cbfbd1, type: 3}
+  - {fileID: 21300000, guid: be77d0e4af7e05548ba390b450491b3c, type: 3}
+  - {fileID: 21300000, guid: 19dcf1642d8df1c4ca72dceb793921c4, type: 3}
+  - {fileID: 21300000, guid: db4031a8399cd49478239ca12474d39c, type: 3}
+  - {fileID: 21300000, guid: 1f7e91c2355ea6f48a18dc1fa4080473, type: 3}
+  - {fileID: 21300000, guid: d165d41a3cca3b74381a95ef00e8f032, type: 3}
   animationSpeed: 0.1
   moveSpeed: 2
   player: {fileID: 0}

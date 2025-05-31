@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 1535529654910413273}
   - component: {fileID: -50292634787543608}
   m_Layer: 0
-  m_Name: ENEMIGO3FINAL
+  m_Name: enemigo1Hielo
   m_TagString: Enemigo
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -78,7 +78,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 49ee725cca7b88840bbe7d9e2e616048, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 34dd4aa5045b5f54291773fe46d7bf68, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -189,7 +189,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHealth: 50
   pointsForKilling: 10
-  monedaPrefab: {fileID: 2478377979779296265, guid: 223b36081d7ee514d9d555d0409a0e93, type: 3}
+  monedaPrefab: {fileID: 1408800137640622652, guid: c775fcd4a5ec6434296c8496f028bfe2, type: 3}
   isBoss: 0
   victoryPanel: {fileID: 0}
   points: 10
@@ -206,14 +206,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   walkSprites:
-  - {fileID: 21300000, guid: 49ee725cca7b88840bbe7d9e2e616048, type: 3}
-  - {fileID: 21300000, guid: 487a0c018c411df44869b85e066ffb31, type: 3}
-  - {fileID: 21300000, guid: 1ad2c2048afc667488009a84ad9c0a31, type: 3}
-  - {fileID: 21300000, guid: 6fb098a286231b74ca5f63f6c45ff0d8, type: 3}
-  - {fileID: 21300000, guid: 6dd0af44734d8e343803212a21ba6287, type: 3}
-  - {fileID: 21300000, guid: 5f6ead2f3c6810a49a3c337aea9c4fb2, type: 3}
-  - {fileID: 21300000, guid: b4c7d9529edd131479f05e865a66cea7, type: 3}
-  - {fileID: 21300000, guid: ed314f2913b2fe440943a539c8056226, type: 3}
+  - {fileID: 21300000, guid: 34dd4aa5045b5f54291773fe46d7bf68, type: 3}
+  - {fileID: 21300000, guid: 105c5f0d50a474f42abc036e1f1edffb, type: 3}
+  - {fileID: 21300000, guid: 0a1e8b7499e5b80428fe1d8a6b297bdc, type: 3}
+  - {fileID: 21300000, guid: 111bc6fbbc977854ba8ebeedbc2c2e1b, type: 3}
+  - {fileID: 21300000, guid: 447ab7595ff17f74192fac2d4ffcf20b, type: 3}
+  - {fileID: 21300000, guid: 1b81f6689d0b030439e64d6040da4067, type: 3}
+  - {fileID: 21300000, guid: d803a21c7b89ee24fbc3126d3a75029c, type: 3}
+  - {fileID: 21300000, guid: da91309d6ce8d364fa95fcb4a99cc0a3, type: 3}
   animationSpeed: 0.1
   moveSpeed: 2
   player: {fileID: 0}

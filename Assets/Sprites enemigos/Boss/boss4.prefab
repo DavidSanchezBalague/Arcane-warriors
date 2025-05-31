@@ -44,37 +44,41 @@ PrefabInstance:
       value: 10
       objectReference: {fileID: 0}
     - target: {fileID: -50292634787543608, guid: 56e59576ec0105c4497e4a7c36ebe109, type: 3}
+      propertyPath: moveSpeed
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: -50292634787543608, guid: 56e59576ec0105c4497e4a7c36ebe109, type: 3}
       propertyPath: walkSprites.Array.data[0]
       value: 
-      objectReference: {fileID: 21300000, guid: 49ee725cca7b88840bbe7d9e2e616048, type: 3}
+      objectReference: {fileID: 21300000, guid: a2ea443826be6de439fb9a92ff73c0ad, type: 3}
     - target: {fileID: -50292634787543608, guid: 56e59576ec0105c4497e4a7c36ebe109, type: 3}
       propertyPath: walkSprites.Array.data[1]
       value: 
-      objectReference: {fileID: 21300000, guid: 487a0c018c411df44869b85e066ffb31, type: 3}
+      objectReference: {fileID: 21300000, guid: 5712035230497774fb5f09cfc17f042e, type: 3}
     - target: {fileID: -50292634787543608, guid: 56e59576ec0105c4497e4a7c36ebe109, type: 3}
       propertyPath: walkSprites.Array.data[2]
       value: 
-      objectReference: {fileID: 21300000, guid: 1ad2c2048afc667488009a84ad9c0a31, type: 3}
+      objectReference: {fileID: 21300000, guid: ec5d674659204f34a8b13b4bae1006f7, type: 3}
     - target: {fileID: -50292634787543608, guid: 56e59576ec0105c4497e4a7c36ebe109, type: 3}
       propertyPath: walkSprites.Array.data[3]
       value: 
-      objectReference: {fileID: 21300000, guid: 6fb098a286231b74ca5f63f6c45ff0d8, type: 3}
+      objectReference: {fileID: 21300000, guid: 1644c47510581c04c99463dbf135a4ac, type: 3}
     - target: {fileID: -50292634787543608, guid: 56e59576ec0105c4497e4a7c36ebe109, type: 3}
       propertyPath: walkSprites.Array.data[4]
       value: 
-      objectReference: {fileID: 21300000, guid: 6dd0af44734d8e343803212a21ba6287, type: 3}
+      objectReference: {fileID: 21300000, guid: 15fd3267171fc784db0654ab3e45387b, type: 3}
     - target: {fileID: -50292634787543608, guid: 56e59576ec0105c4497e4a7c36ebe109, type: 3}
       propertyPath: walkSprites.Array.data[5]
       value: 
-      objectReference: {fileID: 21300000, guid: 5f6ead2f3c6810a49a3c337aea9c4fb2, type: 3}
+      objectReference: {fileID: 21300000, guid: 545e201d9ea354141ac65dccfd5f5080, type: 3}
     - target: {fileID: -50292634787543608, guid: 56e59576ec0105c4497e4a7c36ebe109, type: 3}
       propertyPath: walkSprites.Array.data[6]
       value: 
-      objectReference: {fileID: 21300000, guid: b4c7d9529edd131479f05e865a66cea7, type: 3}
+      objectReference: {fileID: 21300000, guid: dfc7bc38ae4dfb440a37fa1db097cd2e, type: 3}
     - target: {fileID: -50292634787543608, guid: 56e59576ec0105c4497e4a7c36ebe109, type: 3}
       propertyPath: walkSprites.Array.data[7]
       value: 
-      objectReference: {fileID: 21300000, guid: ed314f2913b2fe440943a539c8056226, type: 3}
+      objectReference: {fileID: 21300000, guid: fd3ddc8441d16a44f9f66bf5a81c8ec1, type: 3}
     - target: {fileID: 554271584231262724, guid: 56e59576ec0105c4497e4a7c36ebe109, type: 3}
       propertyPath: m_LocalScale.x
       value: 2
@@ -137,11 +141,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1535529654910413273, guid: 56e59576ec0105c4497e4a7c36ebe109, type: 3}
       propertyPath: maxHealth
-      value: 300
+      value: 400
       objectReference: {fileID: 0}
+    - target: {fileID: 1535529654910413273, guid: 56e59576ec0105c4497e4a7c36ebe109, type: 3}
+      propertyPath: monedaPrefab
+      value: 
+      objectReference: {fileID: 6350003533273784505, guid: 4e77634a89758e445913e95cf517db49, type: 3}
     - target: {fileID: 3596122209876473173, guid: 56e59576ec0105c4497e4a7c36ebe109, type: 3}
       propertyPath: m_Name
-      value: boss_3
+      value: boss4
       objectReference: {fileID: 0}
     - target: {fileID: 3596122209876473173, guid: 56e59576ec0105c4497e4a7c36ebe109, type: 3}
       propertyPath: m_Layer
@@ -150,7 +158,7 @@ PrefabInstance:
     - target: {fileID: 4155614935990030713, guid: 56e59576ec0105c4497e4a7c36ebe109, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 21300000, guid: 487a0c018c411df44869b85e066ffb31, type: 3}
+      objectReference: {fileID: 21300000, guid: a2ea443826be6de439fb9a92ff73c0ad, type: 3}
     - target: {fileID: 6927988379708141971, guid: 56e59576ec0105c4497e4a7c36ebe109, type: 3}
       propertyPath: m_BodyType
       value: 1
@@ -190,6 +198,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bulletPrefab: {fileID: 652362500794398836, guid: 0bb2350576c7c2c4c8045dff07eff23f, type: 3}
   firePoint: {fileID: 4326567808804680861}
-  numberOfBullets: 8
-  bulletSpeed: 2
-  fireRate: 2
+  numberOfBullets: 10
+  bulletSpeed: 6
+  fireRate: 1

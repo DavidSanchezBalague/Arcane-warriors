@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 1535529654910413273}
   - component: {fileID: -50292634787543608}
   m_Layer: 0
-  m_Name: ENEMIGO3FINAL
+  m_Name: ENEMIGOHieloVERDEFINAL
   m_TagString: Enemigo
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -189,7 +189,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHealth: 50
   pointsForKilling: 10
-  monedaPrefab: {fileID: 2478377979779296265, guid: 223b36081d7ee514d9d555d0409a0e93, type: 3}
+  monedaPrefab: {fileID: 1408800137640622652, guid: c775fcd4a5ec6434296c8496f028bfe2, type: 3}
   isBoss: 0
   victoryPanel: {fileID: 0}
   points: 10
