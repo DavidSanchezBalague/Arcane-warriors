@@ -109,7 +109,7 @@ Transform:
   m_GameObject: {fileID: 2355503999161416276}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.01, y: -0.58, z: 0}
+  m_LocalPosition: {x: -0.01, y: -4.5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -149,7 +149,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 1.7, y: 1.71, z: 0}
-  m_LocalScale: {x: 2, y: 2, z: 0.2}
+  m_LocalScale: {x: 0.5, y: 0.5, z: 0.6}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 5053605632625512373}
@@ -196,7 +196,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 10
-  m_Sprite: {fileID: 21300000, guid: 225c66a216ec8d541a9776f65038f726, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 8e7c9546376e6104b88a75b880203032, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -235,10 +235,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   walkSprites:
-  - {fileID: 21300000, guid: 225c66a216ec8d541a9776f65038f726, type: 3}
-  - {fileID: 21300000, guid: 6f6a5ec7a293b7c42b5b5554120b755b, type: 3}
-  - {fileID: 21300000, guid: ab2f2f72ecb6d7b4faa76bff4e902bf5, type: 3}
-  - {fileID: 21300000, guid: 1cb779929bc6d764991b5b4fbffcdfa9, type: 3}
+  - {fileID: 21300000, guid: 8e7c9546376e6104b88a75b880203032, type: 3}
+  - {fileID: 21300000, guid: 357aa3799497e1140ad96b9bb70e98dc, type: 3}
+  - {fileID: 21300000, guid: d68a53cba3e6d9b41a2ef45d8c1de11b, type: 3}
+  - {fileID: 21300000, guid: 29fb7d5874e67f74b889f577e869f3e0, type: 3}
+  - {fileID: 21300000, guid: 0fe79b3e3d63002439d47ef690bbd820, type: 3}
+  - {fileID: 21300000, guid: af63252e0e476a9469b6adae85ad8fbf, type: 3}
+  - {fileID: 21300000, guid: 12d30957ef93d364e867e0b145526988, type: 3}
+  - {fileID: 21300000, guid: 5ede5c37e80eaff4495910bbc2249887, type: 3}
   animationSpeed: 0.1
   moveSpeed: 20
 --- !u!61 &3327038181687416792
@@ -277,7 +281,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1.41, y: 2.15}
+    oldSize: {x: 20.48, y: 20.48}
     newSize: {x: 20.48, y: 20.48}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
