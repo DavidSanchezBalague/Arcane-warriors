@@ -42,16 +42,16 @@ public class SeleccionPersonaje : MonoBehaviour
         switch (personajeActual)
         {
             case 0: // Gladiador
-                personajeImage.rectTransform.localScale = new Vector3(5.42f, 9.38f, 5.42f);
-                personajeImage.rectTransform.anchoredPosition = new Vector2(0, -150);
+                personajeImage.rectTransform.localScale = new Vector3(6.845691f, 7.329075f, 4.23646f);
+                personajeImage.rectTransform.anchoredPosition = new Vector2(0, -110);
                 break;
             case 1: // Ninja
-                personajeImage.rectTransform.localScale = new Vector3(5.54f, 7.18f, 5.54f);
-                personajeImage.rectTransform.anchoredPosition = new Vector2(0, -128);
+                personajeImage.rectTransform.localScale = new Vector3(6.845691f, 7.329075f, 4.23646f);
+                personajeImage.rectTransform.anchoredPosition = new Vector2(0, -72);
                 break;
             case 2: // Hechicero
-                personajeImage.rectTransform.localScale = new Vector3(6.67f, 8.66f, 6.67f);
-                personajeImage.rectTransform.anchoredPosition = new Vector2(0, -101);
+                personajeImage.rectTransform.localScale = new Vector3(6.845691f, 7.329075f, 4.23646f);
+                personajeImage.rectTransform.anchoredPosition = new Vector2(0, -131);
                 break;
         }
     }
