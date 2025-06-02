@@ -2704,6 +2704,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   victoryPanel: {fileID: 78914656}
   nivelActual: 1
+  textoPuntuacion: {fileID: 25330425}
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0

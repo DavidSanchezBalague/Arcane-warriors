@@ -17,6 +17,7 @@ public class LevelManager : MonoBehaviour
 
     public Image crossFadeImage; // La imagen del CrossFade
     public Sprite[] levelBackgrounds; // Array de imágenes para cada nivel
+    public int puntuacionTotal = 0;
 
     private void Awake()
     {
@@ -92,7 +93,11 @@ public class LevelManager : MonoBehaviour
         yield return transition.AnimateTransitionOut();
     }
 
-
+    public void AñadirPuntos(int puntos)
+    {
+        puntuacionTotal += puntos;
+        Debug.Log("Puntuación acumulada: " + puntuacionTotal);
+    }
 
 
     private IEnumerator LoadSceneAsync(string sceneName, string transitionName)
