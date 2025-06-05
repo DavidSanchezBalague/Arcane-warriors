@@ -66,6 +66,20 @@ public class GameOver : MonoBehaviour
         SceneManager.LoadScene("Menu");
     }
 
+    public void IrAPantallaFinal()
+    {
+        Time.timeScale = 1;
+
+        // Guarda la puntuación antes de ir a la siguiente escena
+        int puntuacionFinal = ScoreManager.Instance.score;
+        PlayerPrefs.SetInt("PuntuacionFinal", puntuacionFinal);
+        PlayerPrefs.Save();
+
+        // Carga la escena donde se pone el nombre
+        SceneManager.LoadScene("FinalScoreScene");
+    }
+
+
     void NivelCompletado(int nivelActual)
     {
         int nivelDesbloqueado = PlayerPrefs.GetInt("NivelDesbloqueado", 1);
