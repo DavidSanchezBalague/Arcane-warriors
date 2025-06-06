@@ -1,4 +1,4 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
@@ -70,28 +70,31 @@ public class GameOver : MonoBehaviour
     {
         Time.timeScale = 1;
 
-        // Guarda la puntuaci�n antes de ir a la siguiente escena
-        int puntuacionFinal = ScoreManager.Instance.score;
+        int puntuacionFinal = LevelManager.Instance.puntuacionTotal; // ✅ puntos acumulados
+
+
+        Debug.Log("Puntuación acumulada: " + puntuacionFinal); // ✅ AHORA sí, antes de guardar
+
         PlayerPrefs.SetInt("PuntuacionFinal", puntuacionFinal);
         PlayerPrefs.Save();
 
-        // Carga la escena donde se pone el nombre
         SceneManager.LoadScene("FinalScoreScene");
     }
+
 
 
     void NivelCompletado(int nivelActual)
     {
         int nivelDesbloqueado = PlayerPrefs.GetInt("NivelDesbloqueado", 1);
 
-        // Si el jugador complet� un nivel por primera vez, desbloquear el siguiente
+        // Si el jugador completó un nivel por primera vez, desbloquear el siguiente
         if (nivelActual >= nivelDesbloqueado)
         {
             PlayerPrefs.SetInt("NivelDesbloqueado", nivelActual + 1);
             PlayerPrefs.Save();
         }
 
-        // Volver al men� de niveles
+        // Volver al menú de niveles
         SceneManager.LoadScene("Menu Levels");
     }
 }

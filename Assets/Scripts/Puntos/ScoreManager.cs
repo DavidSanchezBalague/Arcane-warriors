@@ -20,7 +20,7 @@ public class ScoreManager : MonoBehaviour
             return;
         }
 
-        ResetScore(); // IMPORTANTE: Resetear la puntuación al inicio de la partida
+        //ResetScore(); // IMPORTANTE: Resetear la puntuación al inicio de la partida
     }
 
     public void ResetScore()

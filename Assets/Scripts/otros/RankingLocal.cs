@@ -2,15 +2,22 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class RankingLocal : MonoBehaviour
 {
-    public TMP_Text textoRanking;
+    public TMP_Text textoResultado;
 
     void Start()
     {
         string nombre = PlayerPrefs.GetString("UltimoNombre", "Jugador");
         int puntos = PlayerPrefs.GetInt("UltimaPuntuacion", 0);
-        textoRanking.text = "Última puntuación: " + nombre + " - " + puntos + " pts";
+
+        textoResultado.text = nombre + " - " + puntos + " pts";
+    }
+
+    public void VolverAlMenu()
+    {
+        SceneManager.LoadScene("Menu");
     }
 }

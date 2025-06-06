@@ -1,30 +1,45 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class FinalScoreManager : MonoBehaviour
 {
-    public InputField nombreInput;
-    public Text puntuacionText;
+    public TMP_Text textoPuntuacion;
+    public TMP_InputField inputNombre;
 
     private int puntuacionFinal;
 
     void Start()
     {
-        puntuacionFinal = PlayerPrefs.GetInt("PuntuacionFinal", 0); // la guardas antes de cambiar de escena
-        puntuacionText.text = "Tu puntuación: " + puntuacionFinal.ToString();
+        if (!PlayerPrefs.HasKey("PuntuacionFinal"))
+        {
+            Debug.LogWarning("NO SE ENCONTRÓ LA CLAVE 'PuntuacionFinal'");
+        }
+
+        puntuacionFinal = PlayerPrefs.GetInt("PuntuacionFinal", 0);
+        Debug.Log("Valor recibido: " + puntuacionFinal);
+
+        textoPuntuacion.text = "Puntuación: " + puntuacionFinal.ToString();
     }
 
     public void GuardarPuntuacion()
     {
-        string nombre = nombreInput.text;
-        if (string.IsNullOrEmpty(nombre)) return;
+        string nombre = inputNombre.text;
+
+        if (string.IsNullOrEmpty(nombre))
+        {
+            Debug.Log("Introduce un nombre válido");
+            return;
+        }
 
         PlayerPrefs.SetString("UltimoNombre", nombre);
         PlayerPrefs.SetInt("UltimaPuntuacion", puntuacionFinal);
         PlayerPrefs.Save();
 
-        Debug.Log("Guardado: " + nombre + " - " + puntuacionFinal);
+        // Ir a la siguiente escena: RankingLocal
+        SceneManager.LoadScene("RankingLocal");
     }
 }
