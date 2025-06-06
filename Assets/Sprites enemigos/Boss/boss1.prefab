@@ -107,6 +107,10 @@ PrefabInstance:
       propertyPath: maxHealth
       value: 200
       objectReference: {fileID: 0}
+    - target: {fileID: 1681960572701692456, guid: 56e59576ec0105c4497e4a7c36ebe109, type: 3}
+      propertyPath: m_Material
+      value: 
+      objectReference: {fileID: 6200000, guid: a546e7a6929e6494c850a2bb0dd2663f, type: 2}
     - target: {fileID: 3596122209876473173, guid: 56e59576ec0105c4497e4a7c36ebe109, type: 3}
       propertyPath: m_Name
       value: boss1
@@ -119,6 +123,10 @@ PrefabInstance:
       propertyPath: m_BodyType
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 6927988379708141971, guid: 56e59576ec0105c4497e4a7c36ebe109, type: 3}
+      propertyPath: m_Material
+      value: 
+      objectReference: {fileID: 6200000, guid: a546e7a6929e6494c850a2bb0dd2663f, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects:
