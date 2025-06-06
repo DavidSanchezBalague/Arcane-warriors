@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4191577155221306081}
   - component: {fileID: 2212005897663554578}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: weaponR2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -93,7 +93,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5053605632625512373}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: movergun
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -132,7 +132,7 @@ GameObject:
   - component: {fileID: 703647166907132909}
   - component: {fileID: 597650992892560303}
   - component: {fileID: 5515637110730279429}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Gladiador
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -305,7 +305,7 @@ Rigidbody2D:
   m_Mass: 1
   m_LinearDrag: 0
   m_AngularDrag: 0.05
-  m_GravityScale: 0
+  m_GravityScale: 1
   m_Material: {fileID: 6200000, guid: a546e7a6929e6494c850a2bb0dd2663f, type: 2}
   m_IncludeLayers:
     serializedVersion: 2

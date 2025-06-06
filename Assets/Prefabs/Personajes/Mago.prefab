@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 975056282637103207}
   - component: {fileID: 6580554615514174665}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: weaponR2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -100,7 +100,7 @@ GameObject:
   - component: {fileID: 4056430834537174560}
   - component: {fileID: 292764895721856051}
   - component: {fileID: 9092732918119358234}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Mago
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -274,7 +274,7 @@ Rigidbody2D:
   m_Mass: 1
   m_LinearDrag: 0
   m_AngularDrag: 0.05
-  m_GravityScale: 0
+  m_GravityScale: 1
   m_Material: {fileID: 6200000, guid: a546e7a6929e6494c850a2bb0dd2663f, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
@@ -329,7 +329,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5408933767308721733}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: movergun
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -371,6 +371,10 @@ PrefabInstance:
     - target: {fileID: 6742892152330944887, guid: b74ca0ce8c3e85740bd05e02114f5088, type: 3}
       propertyPath: m_Name
       value: AuraArcana
+      objectReference: {fileID: 0}
+    - target: {fileID: 6742892152330944887, guid: b74ca0ce8c3e85740bd05e02114f5088, type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 6742892152330944887, guid: b74ca0ce8c3e85740bd05e02114f5088, type: 3}
       propertyPath: m_IsActive

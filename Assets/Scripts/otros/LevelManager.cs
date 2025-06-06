@@ -4,6 +4,14 @@ using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 using System.Linq;
 
+[System.Serializable]
+public class EnemyStats
+{
+    public int maxHealth;
+    public float velocidad;
+    public int damage;
+}
+
 public class LevelManager : MonoBehaviour
 {
     public static LevelManager Instance;
@@ -18,6 +26,9 @@ public class LevelManager : MonoBehaviour
     public Image crossFadeImage; // La imagen del CrossFade
     public Sprite[] levelBackgrounds; // Array de imágenes para cada nivel
     public int puntuacionTotal = 0;
+
+    public EnemyStats[] statsPorNivel;
+    public int nivelActual = 0;
 
     private void Awake()
     {
@@ -35,6 +46,11 @@ public class LevelManager : MonoBehaviour
     private void Start()
     {
         transitions = transitionsContainer.GetComponentsInChildren<SceneTransition>();
+    }
+
+    public EnemyStats GetStatsActuales()
+    {
+        return statsPorNivel[nivelActual];
     }
 
     public void LoadScene(string sceneName, string transitionName)

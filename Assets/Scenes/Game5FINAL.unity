@@ -3406,7 +3406,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Coste: 3 moneda'
+  m_text: 'Coste: 10 moneda'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -4181,7 +4181,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Coste: 5 monedas'
+  m_text: 'Coste: 15 monedas'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -5694,7 +5694,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 328.8, y: 153.3}
+  m_AnchoredPosition: {x: 313, y: 153.3}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1071259501
@@ -6375,7 +6375,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Coste: 1 moneda'
+  m_text: 'Coste: 5 moneda'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -7365,8 +7365,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   spawner: {fileID: 1428477631}
   tiendaCanvas: {fileID: 106177410}
-  enemigosOleada1: 3
-  enemigosOleada2: 3
+  enemigosOleada1: 10
+  enemigosOleada2: 12
   bossPrefab: {fileID: 7374759974109708889, guid: b826a67f9f6e80643881986421ec1db0, type: 3}
 --- !u!1001 &1436390609
 PrefabInstance:
@@ -9336,6 +9336,26 @@ MonoBehaviour:
   - {fileID: 21300000, guid: b43013bba4427c44b8ff5dd099cc949f, type: 3}
   - {fileID: 21300000, guid: 6a96df6c61707a64caaf48fc69266b30, type: 3}
   puntuacionTotal: 0
+  statsPorNivel:
+  - maxHealth: 50
+    velocidad: 6.5
+    damage: 1
+  - maxHealth: 65
+    velocidad: 8
+    damage: 1
+  - maxHealth: 80
+    velocidad: 9.5
+    damage: 2
+  - maxHealth: 95
+    velocidad: 9.5
+    damage: 2
+  - maxHealth: 110
+    velocidad: 12
+    damage: 3
+  - maxHealth: 120
+    velocidad: 13
+    damage: 3
+  nivelActual: 4
 --- !u!114 &1979670234
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10701,6 +10721,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 389624674264269011, guid: 3f490ea5c866c544b9135d70e92a774e, type: 3}
+      propertyPath: moveSpeed
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 597650992892560303, guid: 3f490ea5c866c544b9135d70e92a774e, type: 3}
       propertyPath: backUpCamera
       value: 
@@ -10839,6 +10863,10 @@ PrefabInstance:
     - target: {fileID: 1648297737654187930, guid: 1db65dfbea0b9cd4f937f25a3b8b9ab0, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2651691440642402292, guid: 1db65dfbea0b9cd4f937f25a3b8b9ab0, type: 3}
+      propertyPath: moveSpeed
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 3488479899986605852, guid: 1db65dfbea0b9cd4f937f25a3b8b9ab0, type: 3}
       propertyPath: m_Name

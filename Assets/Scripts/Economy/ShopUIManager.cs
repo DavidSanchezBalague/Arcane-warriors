@@ -12,6 +12,17 @@ public class ShopUIManager : MonoBehaviour
     public Button botonCurar;
     public Button botonEspecial;
     private bool tiendaAbierta = false;
+    private int costeVelocidad = 5;
+    private int costeVida = 10;
+    private int costeEspecial = 15;
+
+    // Mejoras acumuladas
+    private int velocidadCompras = 0;
+    private int vidaCompras = 0;
+
+    // Límite (opcional, puedes quitarlo si quieres)
+    private const int maxComprasVelocidad = 3;
+    private const int maxComprasVida = 2;
 
     public enum ShopItem
     {
@@ -77,24 +88,91 @@ public class ShopUIManager : MonoBehaviour
         ControladorEnemigos controlador = FindObjectOfType<ControladorEnemigos>();
         if (controlador != null)
         {
-            controlador.TiendaCerrada();
+            // 🔥 Comprobar de qué tipo era la tienda abierta
+            if (controlador.EraTiendaPorOleada())
+                controlador.TiendaCerrada(); // continúa la oleada o genera boss
+            else
+                controlador.TiendaCerradaManual(); // solo cierra
         }
     }
+
     public void ComprarSubirVelocidad()
     {
-        ComprarItem(ShopItem.SubirVelocidad, 1);
+        if (velocidadCompras >= maxComprasVelocidad) return;
+
+        if (EconomyManager.Instance.GastarMonedas(costeVelocidad))
+        {
+            Walk jugador = FindObjectOfType<Walk>();
+            if (jugador != null)
+            {
+                jugador.moveSpeed += 10f;
+                Debug.Log("Velocidad aumentada. Nueva velocidad: " + jugador.moveSpeed);
+            }
+
+            velocidadCompras++;
+            costeVelocidad += 10;
+
+            if (EconomyManager.Instance.uiEconomia != null)
+            {
+                EconomyManager.Instance.uiEconomia.ActualizarMonedas(EconomyManager.Instance.ObtenerMonedas());
+            }
+
+            ActualizarBloqueos();
+        }
     }
 
     public void ComprarCurarVida()
     {
-        ComprarItem(ShopItem.CurarVida, 3);
+        if (vidaCompras >= maxComprasVida) return;
+
+        if (EconomyManager.Instance.GastarMonedas(costeVida))
+        {
+            if (vidaJugador == null)
+                vidaJugador = FindObjectOfType<VidaPersonaje>();
+
+            if (jugadorVidaUI == null)
+                jugadorVidaUI = FindObjectOfType<JugadorVida>();
+
+            if (vidaJugador != null)
+            {
+                vidaJugador.vidaMaxima += 50;
+                vidaJugador.RestaurarVida();
+
+                Debug.Log("Vida máxima aumentada. Nueva vida: " + vidaJugador.vidaMaxima);
+            }
+
+            vidaCompras++;
+            costeVida += 10;
+
+            if (EconomyManager.Instance.uiEconomia != null)
+            {
+                EconomyManager.Instance.uiEconomia.ActualizarMonedas(EconomyManager.Instance.ObtenerMonedas());
+            }
+            ActualizarBloqueos();
+        }
     }
 
+
+
     // ?? NUEVO: único botón para habilidad especial
+    private bool habilidadEspecialComprada = false;
+
     public void ComprarHabilidadEspecial()
     {
-        ComprarItem(ShopItem.HabilidadEspecial, 2); // Ajusta el precio si quieres
+        if (habilidadEspecialComprada) return;
+
+        if (EconomyManager.Instance.GastarMonedas(costeEspecial))
+        {
+            AplicarEfecto(ShopItem.HabilidadEspecial);
+            habilidadEspecialComprada = true;
+            if (EconomyManager.Instance.uiEconomia != null)
+            {
+                EconomyManager.Instance.uiEconomia.ActualizarMonedas(EconomyManager.Instance.ObtenerMonedas());
+            }
+            ActualizarBloqueos();
+        }
     }
+
 
     private void ComprarItem(ShopItem item, int precio)
     {
@@ -104,7 +182,7 @@ public class ShopUIManager : MonoBehaviour
 
             if (EconomyManager.Instance.uiEconomia != null)
             {
-                EconomyManager.Instance.uiEconomia.ActualizarMonedas(EconomyManager.Instance.ObtenerMonedas());
+EconomyManager.Instance.uiEconomia.ActualizarMonedas(EconomyManager.Instance.ObtenerMonedas());                
                 ActualizarBloqueos();
             }
         }
@@ -121,9 +199,10 @@ public class ShopUIManager : MonoBehaviour
         int monedas = EconomyManager.Instance.ObtenerMonedas();
         Debug.Log("ACTUALIZAR BLOQUEOS → Monedas actuales: " + monedas);
 
-        bool puedeVelocidad = monedas >= 1;
-        bool puedeCurar = monedas >= 3;
-        bool puedeEspecial = monedas >= 5;
+        bool puedeVelocidad = monedas >= costeVelocidad && velocidadCompras < maxComprasVelocidad;
+        bool puedeCurar = monedas >= costeVida && vidaCompras < maxComprasVida;
+        bool puedeEspecial = monedas >= costeEspecial && !habilidadEspecialComprada;
+
 
         bloqueoVelocidad.SetActive(!puedeVelocidad);
         bloqueoCurar.SetActive(!puedeCurar);

@@ -78,5 +78,11 @@ public class VidaPersonaje : MonoBehaviour
             Debug.LogWarning("No se encontró el script GameOver en la escena.");
         }
     }
+    public void RestaurarVida()
+    {
+        vidaActual = vidaMaxima;
+        Debug.Log("Vida restaurada al máximo: " + vidaActual);
+    }
+
 
 }

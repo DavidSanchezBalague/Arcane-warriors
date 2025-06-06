@@ -88,6 +88,20 @@ public class ControladorEnemigos : MonoBehaviour
         else
             GenerarBoss();
     }
+    public bool EraTiendaPorOleada()
+    {
+        return esperandoTienda;
+    }
+
+    // Cierre de tienda manual (no avanza oleada ni genera boss)
+    public void TiendaCerradaManual()
+    {
+        Time.timeScale = 1;
+        tiendaCanvas.SetActive(false);
+        tiendaManual = false;
+        Debug.Log("Tienda cerrada manualmente, sin avanzar oleada.");
+    }
+
 
     void IniciarOleada()
     {
