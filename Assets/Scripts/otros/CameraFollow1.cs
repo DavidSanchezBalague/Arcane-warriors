@@ -9,7 +9,11 @@ public class CameraFollow1 : MonoBehaviour
 
     private Transform target;
 
-    void LateUpdate()
+    // NUEVO: límites
+    public Vector2 minLimits;
+    public Vector2 maxLimits;
+
+    private void LateUpdate()
     {
         if (target == null)
         {
@@ -21,7 +25,14 @@ public class CameraFollow1 : MonoBehaviour
         if (target != null)
         {
             Vector3 desiredPosition = target.position + offset;
-            Vector3 smoothedPosition = Vector3.Lerp(transform.position, desiredPosition, smoothSpeed * Time.deltaTime);
+
+            // Aplicar límites a la posición deseada
+            float clampedX = Mathf.Clamp(desiredPosition.x, minLimits.x, maxLimits.x);
+            float clampedY = Mathf.Clamp(desiredPosition.y, minLimits.y, maxLimits.y);
+            Vector3 clampedPosition = new Vector3(clampedX, clampedY, desiredPosition.z);
+
+            // Movimiento suave
+            Vector3 smoothedPosition = Vector3.Lerp(transform.position, clampedPosition, smoothSpeed * Time.deltaTime);
             transform.position = smoothedPosition;
         }
     }

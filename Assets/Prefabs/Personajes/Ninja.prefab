@@ -128,7 +128,7 @@ MonoBehaviour:
   - {fileID: 21300000, guid: b256c2129ac4db147b23313f967a50ab, type: 3}
   - {fileID: 21300000, guid: 808e929634538c54cac9a4f88e5471e1, type: 3}
   animationSpeed: 0.1
-  moveSpeed: 2
+  moveSpeed: 20
 --- !u!61 &2737358471859073679
 BoxCollider2D:
   m_ObjectHideFlags: 0

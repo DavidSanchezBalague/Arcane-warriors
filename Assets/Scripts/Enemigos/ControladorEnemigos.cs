@@ -15,10 +15,15 @@ public class ControladorEnemigos : MonoBehaviour
     private bool esperandoTienda;    // tienda por oleada
     private bool tiendaManual;       // tienda comprada mid‐round
     private bool bossGenerado;
+    private bool primeraOleadaLanzada = false;
 
     void Start()
     {
-        IniciarOleada();
+        if (!primeraOleadaLanzada)
+        {
+            IniciarOleada();
+            primeraOleadaLanzada = true;
+        }
     }
 
     // Llamar desde tu botón “Abrir tienda” mid‐round

@@ -2812,6 +2812,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   smoothSpeed: 5
   offset: {x: 0, y: 0, z: -10}
+  minLimits: {x: -24, y: -24.5}
+  maxLimits: {x: 25.8, y: 24}
 --- !u!1 &553761793
 GameObject:
   m_ObjectHideFlags: 0
