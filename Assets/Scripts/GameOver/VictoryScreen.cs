@@ -5,7 +5,6 @@ using UnityEngine.SceneManagement;
 public class VictoryScreen : MonoBehaviour
 {
     public GameObject victoryPanel; // Panel de Victoria dentro del Canvas
-    public int nivelActual;
     public TextMeshProUGUI textoPuntuacion;
 
     public void MostrarVictoria()
@@ -23,15 +22,24 @@ public class VictoryScreen : MonoBehaviour
 
     void NivelCompletado()
     {
-        int nivelDesbloqueado = PlayerPrefs.GetInt("NivelDesbloqueado", 1);
-        Debug.Log("Nivel desbloqueado antes de actualizar: " + nivelDesbloqueado);
+        int buildIndex = SceneManager.GetActiveScene().buildIndex;
+        int nivelReal = buildIndex - 2; // porque Menu, Elección y Menu Levels están antes
 
-        if (nivelActual >= nivelDesbloqueado) // Si es el último nivel desbloqueado
+        int nivelDesbloqueado = PlayerPrefs.GetInt("NivelDesbloqueado", 1);
+
+        Debug.Log("BuildIndex actual: " + buildIndex);
+        Debug.Log("Nivel actual (real): " + nivelReal);
+        Debug.Log("Nivel desbloqueado guardado antes: " + nivelDesbloqueado);
+
+        int siguienteNivel = nivelReal + 1;
+
+        if (siguienteNivel > nivelDesbloqueado)
         {
-            PlayerPrefs.SetInt("NivelDesbloqueado", nivelActual + 1);
+            PlayerPrefs.SetInt("NivelDesbloqueado", siguienteNivel);
             PlayerPrefs.Save();
-            Debug.Log("Nuevo nivel desbloqueado: " + (nivelActual + 1));
+            Debug.Log("Nuevo nivel desbloqueado: " + siguienteNivel);
         }
     }
+
 
 }
